@@ -108,63 +108,64 @@ h4{
 }
 </style>
 <div class="container">
-<div class="row justify-content-center">
+
 <main role="main">
+    
     <!-- Carousel -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
-        <div class="carousel-item active">
+            <div class="carousel-item active">
 
-            <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/running-fw19-rfto-educate-hp-lf-mh-medium-d_tcm221-356981.jpg" alt="" width="100%" height="100%" fill="#777">
-            <div class="container">
-            <div class="carousel-caption text-left">
-                <h1 style="color: #000; font-weight: 600;">RUN FOR THE OCEANS</h1>
-                <p style="color: #000;">It's time to take action against marine plastic pollution. Rally your <br>friends to join the movement.</p>
-                <p><a class="btn btn-lg btn-dark" role="button" style="margin-bottom: 160px">LEARN MORE <i class="fa fa-arrow-right"></i></a></p>
+                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/running-fw19-rfto-educate-hp-lf-mh-medium-d_tcm221-356981.jpg" alt="" width="100%" height="500px" fill="#777">
+                <div class="container">
+                <div class="carousel-caption text-left">
+                    <h1 style="color: #000; font-weight: 600;">RUN FOR THE OCEANS</h1>
+                    <p style="color: #000;">It's time to take action against marine plastic pollution. Rally your <br>friends to join the movement.</p>
+                    <p><a class="btn btn-lg btn-dark" role="button" style="margin-bottom: 160px">LEARN MORE <i class="fa fa-arrow-right"></i></a></p>
+                </div>
+                </div>
             </div>
-            </div>
-        </div>
-        <div class="carousel-item">
+            <div class="carousel-item">
 
-            <img src="https://image.adidas.co.kr/upload/banner/bbf2598bfc7c4a2ba1f8aad25b494123_0429163854.jpg" alt="" width="100%" height="100%" fill="#777">
-            <div class="container">
-            <div class="carousel-caption text-left">
-                <h1 style="color: #000; font-weight: 600;">For Women,<br>Give Love & Thanks</h1>
-                    
-                <p style="color: #000;">Light up the night in new Nite Jogger colorways. Photo by Cole Younger.</p>
-                <p><a class="btn btn-lg btn-dark" role="button">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
-                <p><a class="btn btn-lg btn-dark" role="button" style="margin-bottom: 120px">VIEW MEMBER BENEFITS <i class="fa fa-arrow-right"></i></a></p>
-            
+                <img src="https://image.adidas.co.kr/upload/banner/bbf2598bfc7c4a2ba1f8aad25b494123_0429163854.jpg" alt="" width="100%" height="500px" fill="#777">
+                <div class="container">
+                <div class="carousel-caption text-left">
+                    <h1 style="color: #000; font-weight: 600;">For Women,<br>Give Love & Thanks</h1>
+                        
+                    <p style="color: #000;">Light up the night in new Nite Jogger colorways. Photo by Cole Younger.</p>
+                    <p><a class="btn btn-lg btn-dark" role="button">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
+                    <p><a class="btn btn-lg btn-dark" role="button" style="margin-bottom: 120px">VIEW MEMBER BENEFITS <i class="fa fa-arrow-right"></i></a></p>
+                
+                </div>
+                </div>
             </div>
+
+            <div class="carousel-item">
+                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/training-aSMC-ss20-mh-earthday-image2-d_tcm221-485018.jpg" alt="" width="100%" height="500px" fill="#777">
+
+                <div class="carousel-caption text-left">
+                        <h1>HEY WORLD!</h1>
+                        <p>Earth Day is Every Day, the new collection that respects and celebrates our planet.</p>
+                        <p><a class="btn btn-lg btn-light" role="button">SHOP COLLECTION <i class="fa fa-arrow-right"></i></a></p>
+                </div>
             </div>
-        </div>
 
+            <div class="carousel-item">
+                <img src="https://content.nike.com/content/dam/one-nike/en_lu/SU19/Mens/W_20190516_EMEA_NSW_MLP_P3A_SHOX/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg.transform/full-screen/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg" alt="" width="100%" height="500px" fill="#777">
 
-        <div class="carousel-item">
-            <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/training-aSMC-ss20-mh-earthday-image2-d_tcm221-485018.jpg" alt="" width="100%" height="100%" fill="#777">
-
-        <div class="carousel-caption text-left">
-                <h1>HEY WORLD!</h1>
-                <p>Earth Day is Every Day, the new collection that respects and celebrates our planet.</p>
-                <p><a class="btn btn-lg btn-light" role="button">SHOP COLLECTION <i class="fa fa-arrow-right"></i></a></p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="https://content.nike.com/content/dam/one-nike/en_lu/SU19/Mens/W_20190516_EMEA_NSW_MLP_P3A_SHOX/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg.transform/full-screen/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg" alt="" width="100%" height="100%" fill="#777">
-
-            <div class="container">
-            <div class="carousel-caption text-left">
-                <h1>KICK UP A STORM IN SHOX</h1>
-                <p>The subversive Nike Shox R4 is making<br>
-    waves in clean monochrome colourways.</p>
-                <p><a class="btn btn-lg btn-light" role="button" style="margin-bottom: 130px">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
-            </div>
+                <div class="container">
+                <div class="carousel-caption text-left">
+                    <h1>KICK UP A STORM IN SHOX</h1>
+                    <p>The subversive Nike Shox R4 is making<br>
+                        waves in clean monochrome colourways.</p>
+                    <p><a class="btn btn-lg btn-light" role="button" style="margin-bottom: 130px">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
+                </div>
             </div>
         </div>
         </div>
@@ -251,6 +252,6 @@ h4{
     </div>
     <!-- End of Shop's Value Details -->
 </main>
-</div>
+
 </div>
 @endsection
