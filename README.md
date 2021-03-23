@@ -8,18 +8,25 @@
 </p>
 
 //start the server
+
 php artisan serve
 
 //database name
+
 floristwebsite
 
 //create model
+
 php artisan make:model User
+
 php artisan make:model Bouquet
 
 //migrate
+
 //migrate all
+
 php artisan migrate
 
 //install the dependencies
+
 npm install
