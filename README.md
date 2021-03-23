@@ -6,27 +6,3 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-
-//start the server
-
-php artisan serve
-
-//database name
-
-floristwebsite
-
-//create model
-
-php artisan make:model User
-
-php artisan make:model Bouquet
-
-//migrate
-
-//migrate all
-
-php artisan migrate
-
-//install the dependencies
-
-npm install
