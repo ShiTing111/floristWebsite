@@ -122,7 +122,7 @@ h4{
         <div class="carousel-inner">
             <div class="carousel-item active">
 
-                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/running-fw19-rfto-educate-hp-lf-mh-medium-d_tcm221-356981.jpg" alt="" width="100%" height="500px" fill="#777">
+                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/running-fw19-rfto-educate-hp-lf-mh-medium-d_tcm221-356981.jpg" alt="" width="100%" height="600px" fill="#777">
                 <div class="container">
                 <div class="carousel-caption text-left">
                     <h1 style="color: #000; font-weight: 600;">RUN FOR THE OCEANS</h1>
@@ -133,7 +133,7 @@ h4{
             </div>
             <div class="carousel-item">
 
-                <img src="https://image.adidas.co.kr/upload/banner/bbf2598bfc7c4a2ba1f8aad25b494123_0429163854.jpg" alt="" width="100%" height="500px" fill="#777">
+                <img src="https://image.adidas.co.kr/upload/banner/bbf2598bfc7c4a2ba1f8aad25b494123_0429163854.jpg" alt="" width="100%" height="600px" fill="#777">
                 <div class="container">
                 <div class="carousel-caption text-left">
                     <h1 style="color: #000; font-weight: 600;">For Women,<br>Give Love & Thanks</h1>
@@ -147,7 +147,7 @@ h4{
             </div>
 
             <div class="carousel-item">
-                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/training-aSMC-ss20-mh-earthday-image2-d_tcm221-485018.jpg" alt="" width="100%" height="500px" fill="#777">
+                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/training-aSMC-ss20-mh-earthday-image2-d_tcm221-485018.jpg" alt="" width="100%" height="600px" fill="#777">
 
                 <div class="carousel-caption text-left">
                         <h1>HEY WORLD!</h1>
@@ -157,7 +157,7 @@ h4{
             </div>
 
             <div class="carousel-item">
-                <img src="https://content.nike.com/content/dam/one-nike/en_lu/SU19/Mens/W_20190516_EMEA_NSW_MLP_P3A_SHOX/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg.transform/full-screen/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg" alt="" width="100%" height="500px" fill="#777">
+                <img src="https://content.nike.com/content/dam/one-nike/en_lu/SU19/Mens/W_20190516_EMEA_NSW_MLP_P3A_SHOX/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg.transform/full-screen/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg" alt="" width="100%" height="600px" fill="#777">
 
                 <div class="container">
                 <div class="carousel-caption text-left">

@@ -1,0 +1,50 @@
+.auth-pages {
+    .card{
+        padding: 20px;
+        border-radius: 0;
+    }
+
+    .btn-outline-dark{
+        border-radius: 0;
+        width: 150px;
+    }
+
+    .btn-outline-dark:hover{
+        background: white;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn-dark{
+        border-radius: 0;
+    }
+
+    .spring-btn{
+        clear:both; background: #FC6471; border: none; color: #fff; font-size: 1em; padding: 10px; cursor: pointer; font-size: 17px;
+        background: linear-gradient(to right, #FC6471 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: left bottom;
+        transition: all .5s ease-out;
+    }
+
+    .spring-btn:hover{
+        border: 1px solid #FC6471;
+        background: white;
+        color: white;
+        cursor: pointer;
+        color: #FC6471;
+        background-position: right bottom;
+    }
+
+    html, body{
+        height: 100%;
+        font-family: 'Lato', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Abel', sans-serif;
+    }
+
+    h1,h2 {
+        font-weight: bold;
+        margin-top: 2rem;
+    }
+}

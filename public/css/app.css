@@ -15551,4 +15551,62 @@ a.text-dark:focus {
   }
 }
 
+.auth-pages .card {
+  padding: 20px;
+  border-radius: 0;
+}
+
+.auth-pages .btn-outline-dark {
+  border-radius: 0;
+  width: 150px;
+}
+
+.auth-pages .btn-outline-dark:hover {
+  background: white;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-pages .btn-dark {
+  border-radius: 0;
+}
+
+.auth-pages .spring-btn {
+  clear: both;
+  background: #FC6471;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  background: linear-gradient(to right, #FC6471 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 0.5s ease-out;
+}
+
+.auth-pages .spring-btn:hover {
+  border: 1px solid #FC6471;
+  background: white;
+  color: white;
+  cursor: pointer;
+  color: #FC6471;
+  background-position: right bottom;
+}
+
+.auth-pages html,
+.auth-pages body {
+  height: 100%;
+  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Abel", sans-serif;
+}
+
+.auth-pages h1,
+.auth-pages h2 {
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
 

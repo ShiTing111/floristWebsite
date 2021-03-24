@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+            <div class="auth-pages card">
+                <h1 style="text-align: center"> {{ __('Login') }}</h2>
+                <br>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -51,12 +51,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                        <div class="form-group row justify-content-center">
+                            <div class="col-sm-4 text-center">
+                                <button type="submit" class="spring-btn btn-lg btn-block">
+                                {{ __('Login') }}
                                 </button>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
@@ -64,6 +63,7 @@
                                 @endif
                             </div>
                         </div>
+                     
                     </form>
                 </div>
             </div>
