@@ -110,7 +110,6 @@ h4{
 <div class="container">
 
 <main role="main">
-    
     <!-- Carousel -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

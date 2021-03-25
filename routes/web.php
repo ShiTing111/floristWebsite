@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BouquetController;
+use App\Http\Controllers\BouquetImagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Auth::routes();
+Route::resources([
+    'bouquets' => BouquetController::class,
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/bouquets', [BouquetController::class, 'index']);
+
+Route::get('/dbimage/{id}',[BouquetImagesController::class, 'getImage']);

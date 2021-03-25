@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group row justify-content-center">
-                            <div class="col-sm-4 text-center">
+                            <div class="col-sm-4 text-center buttons">
                                 <button type="submit" class="spring-btn btn-lg btn-block">
                                 {{ __('Login') }}
                                 </button>

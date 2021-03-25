@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Policies\BouquetPolicy;
+use App\Bouquet;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Bouquet::class => BouquetPolicy::class,
     ];
 
     /**
@@ -24,7 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
+        
+        /* define an administrator user role */
+        Gate::define('isAdmin', function($user) {
+            return $user->role == 'admin';
+        });
+        /* define a user role */
+        Gate::define('isUser', function($user) {
+            return $user->role == 'user';
+        });
     }
 }
