@@ -19,7 +19,7 @@ class CreateBouquetsTable extends Migration
             $table->string('description');
             $table->double('price', 8, 2);
             $table->string('image');
-            $table->string('size');
+            $table->string('category');
         });
     }
 
