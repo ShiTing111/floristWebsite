@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouquetController;
-use App\Http\Controllers\BouquetImagesController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +19,11 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'bouquets' => BouquetController::class,
+    'bouquets'=>BouquetController::class,
+    'carts'=>CartController::class,
 ]);
+
+Route::post('/carts/switchToSaveForLater/{bouquet}', [CartController::class, 'switchToSaveForLater'])->name('carts.switchToSaveForLater');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

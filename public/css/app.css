@@ -15679,4 +15679,152 @@ a.text-dark:focus {
   margin-bottom: 16px;
 }
 
+.carts {
+  /*------------------ Cart page ------------------------*/
+  /*------------------ Cart Sidebar ------------------------*/
+  /*------------------ Detail page ------------------------*/
+  /*------------------ SHOP page ------------------------*/
+}
+
+.carts html,
+.carts body {
+  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Abel", sans-serif;
+}
+
+.carts .btn-dark {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
+.carts .btn-outline-dark {
+  color: #000;
+  border-color: #000;
+}
+
+.carts h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-family: "Abel", sans-serif;
+}
+
+.carts .title_cartpage {
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.carts .img_cartpage {
+  width: 50px;
+}
+
+.carts .cart_item {
+  padding: 6px;
+}
+
+.carts .cart_a {
+  color: #000;
+  font-family: "Abel", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 40px;
+}
+
+.carts .cart_p {
+  font-size: 14px;
+}
+
+.carts .cart_sidebar {
+  height: 495px;
+  width: 300px;
+  background-color: #f8f9fa;
+}
+
+.carts .cart-calculator {
+  margin: 10px;
+  height: 295px;
+  width: 280px;
+  background-color: #fff;
+}
+
+.carts .cart_sidebar2 {
+  width: 300px;
+}
+
+.carts .cart-fontstyle {
+  font-weight: bold;
+}
+
+.carts .coupon_fr {
+  background: #f8f9fa;
+  width: 300px;
+  height: 80px;
+  padding: 2px;
+}
+
+.carts .coupon_in {
+  margin: 10px;
+  background-color: #fff;
+  height: 50px;
+  width: 280px;
+}
+
+.carts .page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
+.carts .page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.carts .active {
+  font-weight: bold;
+}
+
+.carts .detail_shop_img {
+  width: 400px;
+}
+
+.carts .tex-dark {
+  color: #000;
+}
+
+.carts .tex-cute {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.carts .tex-cute2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.carts .alert-success {
+  color: #172b4d;
+  font-size: 14px;
+  background: #ebedee;
+  border-color: #ebedee;
+}
+
+.carts .alert {
+  border-radius: 0;
+}
+
+.carts .alert-danger {
+  color: #dc3545;
+  background: white;
+  border-color: #dc3545;
+}
+
 

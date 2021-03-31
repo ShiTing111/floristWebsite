@@ -38,9 +38,9 @@ class BouquetController extends Controller
 
         $validated_data = $request->validate([
             'title' => 'required|max:20',
-            'description' => 'required|max:100',
+            'description' => 'required|max:300',
             'price' => 'required',
-            'size' => 'required',
+            'category' => 'required',
         ]);
 
         if($request->hasfile('image')) {
