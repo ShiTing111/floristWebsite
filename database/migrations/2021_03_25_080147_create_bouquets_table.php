@@ -16,7 +16,7 @@ class CreateBouquetsTable extends Migration
         Schema::create('bouquets', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->double('price', 8, 2);
             $table->string('image');
             $table->string('category');
