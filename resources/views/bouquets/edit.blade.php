@@ -1,4 +1,8 @@
-@extends('layouts.app')
+<?php 
+
+use App\Common;
+
+?>@extends('layouts.app')
 
 @section('content')
 
@@ -7,18 +11,17 @@
         <div class="col-md-8">
             <div class="card">
                 <br>
-                <h2 style="text-align: center"> Create New Bouquet </h2>
+                <h2 style="text-align: center"> Edit New Bouquet </h2>
                 <br>
                 <div class="card-body">
-                    <form action="{{ route('bouquets.store') }}" method="POST" enctype="multipart/form-data" 
-                        onSubmit="return confirm('Are you sure you wish to register this car?');">
-                        
-                        <!-- Title -->
-                        @csrf
+                    <form action="{{ route('bouquets.update',$bouquet->id) }}" method="POST" class="admin_form word" enctype="multipart/form-data" onSubmit="return confirm('Are you sure you wish to update the bouquet detail?');">
+                    <!-- Title -->
+                    @method('PUT')
+                    @csrf
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
                             <div class="col-md-6">
-                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{$bouquet->title}}" required autocomplete="title" autofocus>
                             @error('title')
                                 <span class="alert alert-danger" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -32,7 +35,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{$bouquet->description}}" required autocomplete="description" autofocus>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +48,7 @@
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{$bouquet->price}}" required autocomplete="price" autofocus>
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -54,19 +57,20 @@
                             </div>
                         </div>
 
-                        <!-- Size -->
+                        <!-- Category -->
                         <div class="form-group row">
-                            <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
+                            <label for="category"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('size') is-invalid @enderror" name="size" value="{{ old('size') }}" required autocomplete="size" autofocus>
-                                @error('size')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <select class="form-control" name="category" echo $category>
+                                    <option value="Hat Box">Hat Box</option>
+                                    <option value="Long Box">Long Box</option>
+                                    <option value="Flower Stand">Flower Stand</option>
+                                </select>
                             </div>
                         </div>
+
 
                         <!-- Image -->
                         <div class="form-group row">

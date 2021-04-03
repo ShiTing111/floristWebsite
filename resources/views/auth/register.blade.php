@@ -62,16 +62,17 @@
                             </div>
                         </div>
                         
-                        <!- Got Problem ->
+                        <!-- Role -->
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             
                             <div class="col-md-6">
-                                <select class="form-control" id="role" name="role">
+                                <select class="form-control" name="role" echo $role>
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
                             </select>
                             </div>
+                            
                         </div>
                         <br><br>
                         

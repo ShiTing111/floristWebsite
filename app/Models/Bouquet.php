@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Cart;
 
 class Bouquet extends Model
 {
@@ -19,13 +20,11 @@ class Bouquet extends Model
         'title',
         'description',
         'price',
-        'size',
+        'category',
         'image',
     ];
 
-    public function getBouquetImages()
-    {
-        //One to many relationship
-        return $this->hasMany('App\Models\Bouquet_Images');
+    public function carts() {
+        return $this->hasMany(Cart::class);
     }
 }

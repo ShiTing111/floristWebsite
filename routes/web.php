@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouquetController;
-use App\Http\Controllers\BouquetImagesController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ConfirmationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +21,14 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'bouquets' => BouquetController::class,
+    'bouquets'=>BouquetController::class,
+    'carts'=>CartController::class,
+    'checkouts'=>CheckoutController::class,
+    'confirmations'=>ConfirmationController::class,
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/carts/switchToSaveForLater/{bouquet}', [CartController::class, 'switchToSaveForLater'])->name('carts.switchToSaveForLater');
 
-Route::get('/bouquets', [BouquetController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dbimage/{id}',[BouquetImagesController::class, 'getImage']);
