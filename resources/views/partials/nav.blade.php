@@ -15,15 +15,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/bouquets') }}">Shop</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="http://127.0.0.1:8000/register" class="nav-link">Sign Up</a>
-                </li>
                 <li class="nav-item">
-                    <a href="http://127.0.0.1:8000/login" class="nav-link">Login</a>
-                </li> -->
-                <li class="nav-item">
-                    <a href="http://127.0.0.1:8000/cart" class="nav-link">Cart</a>
+                    <a class="nav-link" href="{{ url('/users') }}">Profile</a>
                 </li>
+                @can('isUser')
+                <li class="nav-item">
+                    <a href="{{ url('/carts') }}" class="nav-link">Cart</a>
+                </li>
+                @endcan
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
