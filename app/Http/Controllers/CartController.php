@@ -20,12 +20,12 @@ class CartController extends Controller
         
         $userId = Auth::user()->id;
         Cart::restore($userId);
+        return view('carts.index');
+        // return view('carts.index')->with([
+        //     'top_pick' => $top_pick,
+        //     'top_pick2' => $top_pick2,
         
-        return view('carts.index')->with([
-            'top_pick' => $top_pick,
-            'top_pick2' => $top_pick2,
-        
-        ]);
+        // ]);
     }
 
     public function store(Request $request)

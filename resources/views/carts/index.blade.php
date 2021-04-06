@@ -1,10 +1,9 @@
 @extends('layout')
 
-@section('title', 'Shopping Cart')
+@section('title', 'Bouquets')
 
 @section('extra-css')
 <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
-<link rel="stylesheet" href="{{ asset('css/laravel-ecommerce.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 @endsection
@@ -42,7 +41,6 @@ form {
             /
             <span>Shopping Cart</span>
 
-
             @if(Cart::count() > 0)
             <h2>YOUR BAG <span class="title_cartpage">{{Cart::count()}} ITEMS </span></h2>
 
@@ -72,28 +70,18 @@ form {
                 <div class="row">
                     <div class="col-lg-2">
                         <a>
-                        <img src="{{ asset('storage/bouquet/'.$item->model->image )}}" class="img_cartpage"></a>
+                            <img src="{{ asset('storage/bouquet/'.$item->model->image )}}" class="img_cartpage"></a>
                     </div>
 
                     <div class="col-lg-5">
                         <a class="cart_a"> {{$item->model->title}}</a>
-                        <p class="cart_p">Category: {{$item->model->category}} <br>
-                            <b>In Stock</b> <i class="far fa fa-check"></i>
-                        </p>
-                        <p>
-
+                        <p class="cart_p">Category: {{$item->model->category}}</p>
                         <form action="{{route('carts.destroy',$item->rowId)}}" method="POST">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-link">Delete</button>
                         </form>
-
-                        <form action="{{route('carts.switchToSaveForLater',$item->rowId)}}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-link">SaveForLater</button>
-                        </form>
                         </p>
-
                     </div> {{-- col-lg-5 end --}}
 
                     <div class="flex-w">
@@ -109,12 +97,10 @@ form {
                                     <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-lg-1"></div>
-
-                    <div class="col-lg-2">$ {{$item->subtotal}}</div>
+                    <div class="col-lg-2">RM {{$item->subtotal}}</div>
                 </div>
             </div>
             <hr>
@@ -133,14 +119,13 @@ form {
             @else
             <h3>No items in Cart!</h3>
             <a href="{{ route('bouquets.index') }}" class="btn btn-link">Continue Shopping</a>
-
             @endif
 
         </div> {{-- col-lg-9 col-sm-6 col-xs-12 end --}}
         <div class="col-lg-3 col-sm-6 col-xs-12">
-            <div class="cart_sidebar">
+            <div class="cart_sidebar buttons">
                 <br>
-                <a href="{{route('checkouts.index')}}" class="btn btn-dark btn-lg btn-block"
+                <a href="{{route('checkouts.index')}}" class="btn spring-btn btn-lg btn-block"
                     style=" margin-right: :4px;">Checkout <i class="fa fa-arrow-right"
                         style="margin-left: 35px;"></i></a>
                 <p class="text-center" style="padding: 7px;">By placing your order, you agree to <br>the Delivery Terms
@@ -149,17 +134,17 @@ form {
                 <div class="cart-calculator">
                     <table class="table">
                         <tr>
-                            <td>{{Cart::count()}} PRODUCTS</td>
+                            <td>{{Cart::count()}} BOUQUET</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Product total</td>
-                            <td>${{Cart::subtotal()}}</td>
+                            <td>Bouquet Total</td>
+                            <td>RM {{Cart::subtotal()}}</td>
 
                         </tr>
                         <tr>
-                            <td>Tax(13%)</td>
-                            <td>${{Cart::tax()}}</td>
+                            <td>Tax(10%)</td>
+                            <td>RM {{Cart::tax()}}</td>
                         </tr>
                         <tr>
                             <td>Delivery</td>
@@ -167,16 +152,10 @@ form {
                         </tr>
                         <tr style="font-weight: bold">
                             <td>Total</td>
-                            <td>${{Cart::total()}}</td>
+                            <td>RM {{Cart::total()}}</td>
                         </tr>
                     </table>
                 </div>
-            </div>
-            <div class="cart_needhelp">
-                <h4>NEED HELP?</h4>
-                <p><a href="" style="color: #000;">Shipping</a></p>
-                <p><a href="" style="color: #000;">Returns & Exchanges</a></p>
-                <p><a href="" style="color: #000;">Contact Us</a></p>
             </div>
         </div> {{-- col-lg-3 col-sm-6 col-xs-12 end --}}
     </div>{{--  row end --}}
@@ -199,10 +178,9 @@ form {
 
 @section('extra-js')
 <script type="text/javascript" src="{{ asset('jquery/jquery-3.2.1.min.js') }}"></script>
-
 <script type="text/javascript" src="{{ asset('animsition/js/animsition.min.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
 <!--===============================================================================================-->
+<script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
 (function() {

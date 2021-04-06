@@ -2,7 +2,9 @@
 
 use App\Common;
 
-?>@extends('layouts.app')
+?>
+
+@extends('layouts.app')
 
 @section('content')
 
@@ -43,6 +45,7 @@ use App\Common;
                                 @enderror
                             </div>
                         </div>
+
                         <!-- Price -->
                         <div class="form-group row">
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
@@ -70,7 +73,6 @@ use App\Common;
                                 </select>
                             </div>
                         </div>
-
 
                         <!-- Image -->
                         <div class="form-group row">

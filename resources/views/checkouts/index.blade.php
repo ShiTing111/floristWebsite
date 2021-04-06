@@ -4,7 +4,7 @@
 
 @section('extra-css')
 <script src="https://js.stripe.com/v3/"></script>
-<link rel="stylesheet" href="{{ asset('css/laravel-ecommerce.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ecom.css') }}">
 @endsection
 
 @section('content')
@@ -25,10 +25,6 @@
     }
 }
 
-/**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
 .StripeElement {
     box-sizing: border-box;
 
@@ -99,21 +95,8 @@ a:hover {
             </div>
             @endif
 
-            @if(count($errors) > 0)
-            <div class="spacer"></div>
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{!! $error !!}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-            {{-- success error msg end --}}
-
             <form method="POST" id="payment-form">
-                {{ csrf_field() }}
-
+                @csrf
                 <div class="mb-3">
                     <label for="email">Email Address</label>
                     @if (auth()->user())
@@ -163,7 +146,7 @@ a:hover {
                 </div>
 
                 <hr class="mb-4">
-
+                
                 <h4 class="mb-3">Payment</h4>
                 <div class="row">
                     <div class="col-md-12">
@@ -175,7 +158,6 @@ a:hover {
                         </div>
                     </div>
                 </div>
-
                 <hr class="mb-4">
                 <div class="buttons">
                     <button type="submit" id="complete-order" class="spring-btn btn-lg btn-block">Checkout</button>
@@ -189,18 +171,18 @@ a:hover {
                 <div class="cart-calculator">
                     <table class="table">
                         <tr>
-                            <td>{{Cart::count()}} PRODUCTS</td>
+                            <td>{{Cart::count()}} BOUQUET</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Product total</td>
-                            <td>${{Cart::subtotal()}}</td>
+                            <td>Bouquet total</td>
+                            <td>RM {{Cart::subtotal()}}</td>
 
                         </tr>
 
                         <tr>
                             <td>Tax(10%)</td>
-                            <td>${{Cart::tax()}}</td>
+                            <td>RM {{Cart::tax()}}</td>
                         </tr>
                         <tr>
                             <td>Delivery</td>
@@ -208,14 +190,15 @@ a:hover {
                         </tr>
                         <tr style="font-weight: bold">
                             <td>Total</td>
-                            <td>${{Cart::total()}}</td>
+                            <td>RM {{Cart::total()}}</td>
                         </tr>
                     </table>
                 </div>
             </div> {{-- cart_sidebar end --}}
             <br>
             <div class="ORDER DETAILS">
-                <h4 style="font-weight: 600; font-size: 22px;">ORDER DETAILS</h4>
+                <h4 style="font-weight: 550; font-size: 22px;">ORDER DETAILS</h4>
+                <hr>
                 @foreach (Cart::content() as $item)
                 <div class="container">
                     <div class="row">
@@ -224,29 +207,21 @@ a:hover {
                                 class="img_cartpage">
                         </div>
                         <div class="col-lg-7">
-                            <a style="color: black;">
-                                {{$item->model->name}}</a>
-                            <p>${{ $item->model->price }}</p>
+                            <a style="color: black;">{{$item->model->title}}</a>
+                            <p>RM {{ $item->model->price }}</p>
 
                             <p class="cart_p">Quantity: {{ $item->qty }} </p>
                         </div>
                     </div>
                 </div>
+                <hr>
                 @endforeach
             </div> {{-- ORDER DETAILS end --}}
-
-            <br>
-            <div class="cart_needhelp">
-                <h5>NEED HELP?</h5>
-                <p><a href="" style="color: #000;">Shipping</a></p>
-                <p><a href="" style="color: #000;">Returns & Exchanges</a></p>
-            </div>
         </div>{{-- col-md-4 order-md-2 mb-4 end --}}
     </div> {{-- row end --}}
 </div> {{-- container end --}}
 
 <br><br>
-
 @endsection
 
 @section('extra-js')

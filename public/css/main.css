@@ -49,31 +49,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 	box-sizing: border-box;
 }
 
-
-
-/* ------------------------------------ */
-a {
-	
-  font-weight: 400;
-	font-size: 15px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-}
-
-a:focus {
-	outline: none !important;
-}
-
-a:hover {
-	text-decoration: none;
-	color: #e65540;
-}
-
 /* ------------------------------------ */
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;

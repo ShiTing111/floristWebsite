@@ -5,6 +5,7 @@ use App\Models\Bouquet;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Auth;
 
 class BouquetController extends Controller
 {
@@ -24,7 +25,7 @@ class BouquetController extends Controller
 
     public function show($id)
     {
-        //
+        $user = Auth::user();
         $bouquet = Bouquet::findOrFail($id);
 
         return view('bouquets.show',[
