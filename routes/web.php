@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
         'checkouts'=>CheckoutController::class,
         'confirmations'=>ConfirmationController::class,
         'users'=>UserController::class,
+        'orders'=>OrderController::class,
     ]);
     //Route::get('/bouquets/{bouquet}', [BouquetController::class, 'show']);
 });

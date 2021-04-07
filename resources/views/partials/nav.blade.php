@@ -20,6 +20,9 @@
                 </li>
                 @can('isUser')
                 <li class="nav-item">
+                    <a href="{{ url('/orders') }}" class="nav-link">My Orders</a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('/carts') }}" class="nav-link">Cart</a>
                 </li>
                 @endcan
