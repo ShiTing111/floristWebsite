@@ -30,5 +30,3 @@ Route::resources([
 Route::post('/carts/switchToSaveForLater/{bouquet}', [CartController::class, 'switchToSaveForLater'])->name('carts.switchToSaveForLater');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/dbimage/{id}',[BouquetImagesController::class, 'getImage']);
