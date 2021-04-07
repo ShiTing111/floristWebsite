@@ -115,7 +115,22 @@ use Carbon\Carbon;
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-dark pull-right">Update</a>
+                        <div class="row">
+                            <div class="col-xl-1">
+                                <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-dark pull-right">Update</a> <t>
+                            </div>
+                            <div class="col-xl-2">
+                                <form class="form-inline" method="POST"
+                                    action="{{ route('orders.destroy',$order->id) }}"
+                                    onSubmit="return confirm('Are you sure you want to delete?');">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                         <br><br>
               
 

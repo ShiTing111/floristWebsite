@@ -72,6 +72,7 @@ use Carbon\Carbon;
                           <thead>
                             <tr>
                               <th scope="col">Order ID</th>
+                              <th scope="col">Customer</th>
                               <th scope="col"> Order Placed </th>
                               <th scope="col">Total</th>
                               <th scope="col"></th>
@@ -83,9 +84,10 @@ use Carbon\Carbon;
                             
                             <tr>
                               <th scope="row">{{ $order->id }}</th>
+                              <td>{{ $order->billing_name}}</td>
                               <td>{{ Carbon::parse($order->created_at)->format('M d, Y') }}</td>
                               <td>${{ $order->billing_total }}</td>
-                              <td><a href="{{ route('orders.show', $order->id) }}">Order Details</a> | <a href="#">Invoice</a></td>
+                              <td><a href="{{ route('orders.show', $order) }}">Order Details</a> | <a href="#">Invoice</a></td>
                               <td>
                                   <div class="ORDER DETAILS">
                         <h4 style="font-weight: 600; font-size: 22px;">ORDER DETAILS</h4>
