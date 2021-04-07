@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('title', 'Bouquets')
 
@@ -16,6 +16,7 @@
 
 .bouquet_img {
     width: 255px;
+    height: 255px;
 }
 
 .bouquet a {

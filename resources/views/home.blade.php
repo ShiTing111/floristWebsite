@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
@@ -107,6 +107,7 @@ h4{
 
 }
 </style>
+
 <div class="container">
 
 <main role="main">

@@ -5,16 +5,12 @@
 @section('extra-css')
 <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 
-
 <link rel="stylesheet" type="text/css" href="{{ asset('animsition/css/animsition.min.css') }}">
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('select2/select2.min.css') }}"> -->
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"> -->
 
 <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
-
-<!-- loader -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -90,7 +86,7 @@
                 <div class="p-b-20">
                     <span class="s-text8">Category: {{$bouquet->category}}</span>
                 </div>
-                @can('isUser')
+                @cannot('isAdmin')
                 <!-- Add to Cart -->
                 <form action="{{ route('carts.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="p-t-33 p-b-60">
@@ -122,7 +118,7 @@
                         </div>
                     </div>
                 </form>
-                @endcan
+                @endcannot
                 <!-- Description -->
                 <div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
                     <h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
@@ -165,7 +161,7 @@
         </div>
     </div>
 </div>
-{{--   --------------------- Product detail end ----------- --}}
+{{--   --------------------- Bouquet detail end ----------- --}}
 @endsection
 
 @section('extra-js')

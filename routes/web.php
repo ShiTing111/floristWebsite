@@ -5,6 +5,7 @@ use App\Http\Controllers\BouquetController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConfirmationController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,11 +23,16 @@ Route::get('/', function () {
 
 Route::resources([
     'bouquets'=>BouquetController::class,
-    'carts'=>CartController::class,
-    'checkouts'=>CheckoutController::class,
-    'confirmations'=>ConfirmationController::class,
+    'users'=>UserController::class,
 ]);
 
-Route::post('/carts/switchToSaveForLater/{bouquet}', [CartController::class, 'switchToSaveForLater'])->name('carts.switchToSaveForLater');
-
+Route::middleware('auth')->group(function () {
+    Route::resources([
+        'carts'=>CartController::class,
+        'checkouts'=>CheckoutController::class,
+        'confirmations'=>ConfirmationController::class,
+        'users'=>UserController::class,
+    ]);
+    //Route::get('/bouquets/{bouquet}', [BouquetController::class, 'show']);
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
