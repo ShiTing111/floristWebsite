@@ -18,8 +18,9 @@ use App\Common;
                 <div class="card-body">
                     <form action="{{ route('bouquets.update',$bouquet->id) }}" method="POST" class="admin_form word" enctype="multipart/form-data" onSubmit="return confirm('Are you sure you wish to update the bouquet detail?');">
                     <!-- Title -->
-                    @method('PUT')
+                    
                     @csrf
+                    @method('PUT')
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
                             <div class="col-md-6">
@@ -66,10 +67,10 @@ use App\Common;
                                 class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" name="category" echo $category>
-                                    <option value="Hat Box">Hat Box</option>
-                                    <option value="Long Box">Long Box</option>
-                                    <option value="Flower Stand">Flower Stand</option>
+                                <select class="form-control" name="category_id" echo $category>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

@@ -20,11 +20,13 @@ class Bouquet extends Model
         'title',
         'description',
         'price',
-        'category',
+        'quantity',
+        'category_id',
         'image',
     ];
 
-    public function carts() {
-        return $this->hasMany(Cart::class);
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

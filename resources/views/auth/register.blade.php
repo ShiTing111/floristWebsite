@@ -61,19 +61,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        
-                        <!-- Role -->
-                        <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-                            
-                            <div class="col-md-6">
-                                <select class="form-control" name="role" echo $role>
-                                <option value="user">User</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                            </div>
-                            
-                        </div>
+                        <input type="hidden" name="role" value={{ $role }}>
                         <br><br>
                         
                         <div class="form-group row justify-content-center">

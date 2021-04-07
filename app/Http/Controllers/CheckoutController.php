@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Models\OrderBouquet;
+use App\Models\BouquetOrder;
 use App\Models\Bouquet;
 use Auth;
 
@@ -27,22 +27,22 @@ class CheckoutController extends Controller
 
     public function store(Request $request)
     {
-        // Check race condition when there are less items available to purchase
-        // if ($this->productsAreNoLongerAvailable()) {
-        //     return back()->withErrors('Sorry! One of the items in your cart is no longer avialble.');
-        // }
+        //Check current item stock when there are less items available to purchase
+        if ($this->productsAreNoLongerAvailable()) {
+            return back()->withErrors('Sorry! One of the items in your cart is no longer avialble.');
+        }
 
-        $order = $this->addToOrdersTables($request, null);
-
-        Cart::instance('default')->destroy();
+        $order = $this->addToOrdersTables($request, null); 
         
+        // decrease the quantities of all the bouquets in the cart
+        $this->decreaseQuantities();
+
+        Cart::instance('default')->destroy();     
         
         //Delete the cart item in the database
         $userId = Auth::user()->id;
         Cart::instance('default')->store($userId);
-        
-        // decrease the quantities of all the products in the cart
-     //   $this->decreaseQuantities();
+    
         if (Cart::instance('default')->count() == 0) {
             return redirect()->route('confirmations.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
         }
@@ -64,9 +64,9 @@ class CheckoutController extends Controller
             'billing_total' => Cart::total(),
         ]);
 
-        // Insert into order_product table
+        // Insert into order_bouquet table
         foreach (Cart::content() as $item) {
-            OrderBouquet::create([
+            BouquetOrder::create([
                 'order_id' => $order->id,
                 'bouquet_id' => $item->model->id,
                 'quantity' => $item->qty,
@@ -76,24 +76,24 @@ class CheckoutController extends Controller
         return $order;
     }
 
-    // protected function decreaseQuantities()
-    // {
-    //     foreach (Cart::content() as $item) {
-    //         $product = Bouquet::find($item->model->id);
+    protected function decreaseQuantities()
+    {
+        foreach (Cart::content() as $item) {
+            $bouquet = Bouquet::find($item->model->id);
 
-    //         $product->update(['quantity' => $product->quantity - $item->qty]);
-    //     }
-    // }
+            $bouquet->update(['quantity' => $bouquet->quantity - $item->qty]);
+        }
+    }
 
-    // protected function productsAreNoLongerAvailable()
-    // {
-    //     foreach (Cart::content() as $item) {
-    //         $product = Bouquet::find($item->model->id);
-    //         if ($product->quantity < $item->qty) {
-    //             return true;
-    //         }
-    //     }
+    protected function productsAreNoLongerAvailable()
+    {
+        foreach (Cart::content() as $item) {
+            $bouquet = Bouquet::find($item->model->id);
+            if ($bouquet->quantity < $item->qty) {
+                return true;
+            }
+        }
 
-    //     return false;
-    // }
+        return false;
+    }
 }

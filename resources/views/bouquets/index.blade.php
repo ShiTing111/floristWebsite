@@ -117,32 +117,29 @@ a {
                         PRODUCT TYPE
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                        @foreach ($bouquets as $category)
-                        <a class="dropdown-item" style="color: #000;">{{ $category->title }}</a>
+                        @foreach ($categories as $category)
+                        <a class="dropdown-item" href="{{ route('bouquets.index', ['category' => $category->id]) }}"
+                            style="color: #000;">
+                            {{ $category->name }}</a>
                         @endforeach
                     </div>
                 </div>
-
-                <div class="btn-group" style="margin-right: 4px;">
-                    <button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset3"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-                        PRICE
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset3">
-                        <a class="dropdown-item">less than $50</a>
-                    </div>
-                </div>
-
                 <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenuOffset2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
                         SORT BY
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset2">
-                        <a class="dropdown-item">
+                        <a class="dropdown-item"
+                            href="{{ route('bouquets.index', ['category'=> request()->category, 'sort' => 'Newest']) }}">
                             Newest</a>
-                        <a class="dropdown-item" style="color: #000;">
+                        <a class="dropdown-item"
+                            href="{{ route('bouquets.index', ['category'=> request()->category, 'sort' => 'low_high']) }}"
+                            style="color: #000;">
                             Price :low - high</a>
+                        <a class="dropdown-item"
+                            href="{{ route('bouquets.index', ['category'=> request()->category, 'sort' => 'high_low']) }}">
+                            Price :high - low</a>
                     </div>
                 </div>
             </div>
@@ -173,9 +170,6 @@ a {
     </div> <!--  row end-->
 </div>{{--  row end --}}
 <div class="row justify-content-end">
-
-    {{$bouquets->links()}}
-
 </div>
 </div> {{-- container end --}}
 

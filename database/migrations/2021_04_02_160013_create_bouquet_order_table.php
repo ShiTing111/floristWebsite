@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderbouquetsTable extends Migration
+class CreateBouquetOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateOrderbouquetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_bouquets', function (Blueprint $table) {
+        Schema::create('bouquet_order', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id')->unsigned()->nullable();
-            $table->foreign('order_id')->references('id')
-                  ->on('orders')->onUpdate('cascade')->onDelete('set null');
-            $table->integer('bouquet_id')->unsigned()->nullable();
-            $table->foreign('bouquet_id')->references('id')
-                ->on('bouquets')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('bouquet_id')
+            ->constrained()->onDelete('cascade');
             $table->integer('quantity')->unsigned();
             $table->timestamps();
         });
