@@ -19,7 +19,9 @@ class CreateBouquetsTable extends Migration
             $table->longText('description');
             $table->double('price', 8, 2);
             $table->string('image');
-            $table->string('category');
+            $table->unsignedInteger('quantity');
+            $table->foreignId('category_id')
+                ->constrained('categories')->onDelete('cascade');
         });
     }
 

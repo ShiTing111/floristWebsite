@@ -15,7 +15,7 @@
    			<div class="col-lg-4"></div>
    			<div class="col-lg-5">
    				 <h1>Thank you for <br> Your Order!</h1>
-       			 <p>A confirmation email was sent</p>
+       			
        
            <a href="{{ url('/') }}" class="button">Home Page</a>
    			</div>

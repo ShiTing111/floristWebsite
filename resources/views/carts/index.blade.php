@@ -75,7 +75,7 @@ form {
 
                     <div class="col-lg-5">
                         <a class="cart_a"> {{$item->model->title}}</a>
-                        <p class="cart_p">Category: {{$item->model->category}}</p>
+                        <p class="cart_p">Category: {{ $item->model->category->name }}</p>
                         <form action="{{route('carts.destroy',$item->rowId)}}" method="POST">
                             @csrf
                             @method('delete')
@@ -84,21 +84,40 @@ form {
                         </p>
                     </div> {{-- col-lg-5 end --}}
 
+
                     <div class="flex-w">
                         <div class="flex-m">
                             <div class="flex-w bo5 of-hidden m-t-10 m-b-10">
-                                <button type="submit" class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+                                
+                                <form action="{{route('carts.update',$item->rowId)}}" method="POST" 
+                                onsubmit="addButton.disabled = true; return true;">
+                                @csrf
+                                @method('patch')
+                                <input type="hidden" name="quantity" value="{{$item->qty}}">
+                                <input type="hidden" name="operation" value="minus">
+                                <input type="hidden" name="productQuantity" value="{{$item->model->quantity}}">
+                                <button name="addButton" type="submit" class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
                                     <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
                                 </button>
+                                </form>
                                 <input class="size8 m-text18 t-center num-product" data-id="{{ $item->rowId }}"
                                     data-productQuantity="{{ $item->model->quantity }}" type="number" name="quantity"
                                     value="{{$item->qty}}" />
-                                <button type="submit" class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+                                <form action="{{route('carts.update',$item->rowId)}}" method="POST" 
+                                onsubmit="minusButton.disabled = true; return true;">
+                                @csrf
+                                @method('patch')
+                                <input type="hidden" name="quantity" value="{{$item->qty}}">
+                                <input type="hidden" name="operation" value="add">
+                                <input type="hidden" name="productQuantity" value="{{$item->model->quantity}}">
+                                <button name="minusButton" type="submit" class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
                                     <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
                                 </button>
+                                </form>
                             </div>
                         </div>
                     </div>
+                   
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2">RM {{$item->subtotal}}</div>
                 </div>
@@ -180,28 +199,6 @@ form {
 <script type="text/javascript" src="{{ asset('jquery/jquery-3.2.1.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('animsition/js/animsition.min.js') }}"></script>
 <!--===============================================================================================-->
-<script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-<script>
-(function() {
-    // https://stackoverflow.com/questions/44074952/increment-and-decrement-price-value-on-change
-    $('[name=quantity]').change(function() {
-        const id = $(this).attr("data-id")
-        const productQuantity = $(this).attr('data-productQuantity')
 
-        axios.patch(`/carts/${id}`, {
-                quantity: this.value,
-                productQuantity: productQuantity
-            })
-            .then(function(response) {
-                // console.log(response);
-                window.location.href = '{{ route('carts.index') }}'
-            })
-            .catch(function(error) {
-                // console.log(error);
-                window.location.href = '{{ route('carts.index') }}'
-            });
-    });
-})();
-</script>
 @endsection
