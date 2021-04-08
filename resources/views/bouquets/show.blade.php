@@ -81,7 +81,8 @@
 
                 <span class="zms_price">
                     RM {{ $bouquet->price }}
-                </span>@
+                </span>
+                <br>
                 @can('isAdmin')
                 <span class="zms_price">
                     Quantity: {{ $bouquet->quantity }}

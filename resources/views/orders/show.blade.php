@@ -9,7 +9,7 @@ use Carbon\Carbon;
 @section('title', 'My Order')
 
 @section('extra-css')
-<link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
+
 @endsection
 
 @section('content')
@@ -95,7 +95,19 @@ a:hover {
                         <td>Total</td>
                         <td>RM {{ $order->billing_total }}</td>
                     </tr>
-                </tbody>
+                    <tr>
+                        <td>Delivery Status</td>
+                        <td>{{ $order->delivery_status }}</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Date</td>
+                        @if($order->delivery_date != null)
+                        <td>{{ $order->delivery_date }}</td>
+                        @else
+                        <td>-</td>
+                        @endif
+                    </tr>
+                  </tbody>
             </table>
             @can('isUser')
             <div class="row">
@@ -115,8 +127,28 @@ a:hover {
                 </div>
             </div>
             @endcan
+
+            @can('isAdmin')
+            @if($order->delivery_status == "Pending")
+            <div class="row">
+                <div class="col-xl-6">
+                    <form class="form-inline" method="POST" action="{{ route('orders.update', $order->id) }}"
+                        onSubmit="return confirm('Are you sure you want to mark as delivered for this order?');">
+                        @csrf
+                        @method('patch')
+                        <input type="hidden" name="delivery_date" value="{{ Carbon::now()->toDateTimeString() }}">
+                        <input type="hidden" name="delivery_status" value={{ 'delivered' }}>
+                        <button type="submit" class="btn btn-success">
+                            Mark as Delivered
+                        </button>
+                    </form>
+                </div>
+            </div>
+            @endif
+            @endcan
             <br><br>
 
+            @if(count($bouquets) > 0)
             <h4 style="font-weight: 600; font-size: 22px;">ORDER DETAILS</h4>
             @foreach ($bouquets as $bouquet)
             <div class="container">
@@ -136,6 +168,7 @@ a:hover {
                 </div>
             </div>
             @endforeach
+            @endif
         </div> {{-- col-lg-9 end --}}
 
         <div class="col-lg-3">

@@ -85,13 +85,13 @@ ul li {
                 </thead>
                 <tbody>
                     @foreach ($orders as $order)
-
                     <tr>
                         <th scope="row">{{ $order->id }}</th>
                         <td>{{ $order->billing_name}}</td>
                         <td>{{ Carbon::parse($order->created_at)->format('M d, Y') }}</td>
                         <td>RM {{ $order->billing_total }}</td>
                         <td><a href="{{ route('orders.show', $order) }}">Order Details</a></td>
+                        @if(count($order->bouquets) > 0)
                         <td>
                             <div class="ORDER DETAILS">
                                 <h4 style="font-weight: 600; font-size: 22px;">ORDER DETAILS</h4>
@@ -115,6 +115,7 @@ ul li {
                                 @endforeach
                             </div> {{-- ORDER DETAILS end --}}
                         </td>
+                        @endif
                     </tr>
                     @endforeach
 
