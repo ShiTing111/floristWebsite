@@ -7,12 +7,9 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
->>>>>>> 30ef3d20e3cb1eac07816e7f912534d20ecae6fc
 /*
 |--------------------------------------------------------------------------
 | Web Routes
