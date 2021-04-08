@@ -162,18 +162,13 @@ a {
             <br>
         </div>
 
-
         @empty
         @include('notfound');
         @endforelse
 
     </div> <!--  row end-->
-</div>{{--  row end --}}
-<div class="row justify-content-end">
 </div>
-</div> {{-- container end --}}
-
-
+</div>
 @endsection
 
 @section('extra-js')

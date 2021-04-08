@@ -10,15 +10,13 @@
 
 @section('content')
 
-   <div class="container">
-   		<div class="row">
-   			<div class="col-lg-4"></div>
-   			<div class="col-lg-5">
-   				 <h1>Thank you for <br> Your Order!</h1>
-       			
-       
-           <a href="{{ url('/') }}" class="button">Home Page</a>
-   			</div>
-   		</div>  
-   </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-5">
+            <h1>Thank you for <br> Your Order!</h1>
+            <a href="{{ url('/') }}" class="button">Home Page</a>
+        </div>
+    </div>
+</div>
 @endsection

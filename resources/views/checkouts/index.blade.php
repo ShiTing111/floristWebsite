@@ -112,80 +112,87 @@ a:hover {
                 <div class="mb-3">
                     <label for="billing_email">Email Address</label>
                     @if (auth()->user())
-                    <input type="billing_email" class="form-control" id="billing_email" name="billing_email" value="{{ auth()->user()->email }}"
-                        readonly>
+                    <input type="billing_email" class="form-control" id="billing_email" name="billing_email"
+                        value="{{ auth()->user()->email }}" readonly>
                     @else
-                    <input type="billing_email" class="form-control" id="billing_email" name="billing_email" value="{{ old('email') }}">
+                    <input type="billing_email" class="form-control" id="billing_email" name="billing_email"
+                        value="{{ old('email') }}">
                     @endif
                 </div>
 
 
                 <div class="mb-3">
                     <label for="billing_name">Name</label>
-                    <input id="billing_name" type="text" class="form-control @error('billing_name') is-invalid @enderror"
-                        name="billing_name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                    <input id="billing_name" type="text"
+                        class="form-control @error('billing_name') is-invalid @enderror" name="billing_name"
+                        value="{{ old('name') }}" autocomplete="name" autofocus>
                     @error('billing_name')
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
 
-
                 <div class="mb-3">
                     <label for="billing_address">Address</label>
-                    <input id="billing_address" type="text" class="form-control @error('billing_address') is-invalid @enderror"
-                        name="billing_address" value="{{ old('address') }}" autocomplete="address" autofocus>
+                    <input id="billing_address" type="text"
+                        class="form-control @error('billing_address') is-invalid @enderror" name="billing_address"
+                        value="{{ old('address') }}" autocomplete="address" autofocus>
                     @error('billing_address')
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="billing_city">City</label>
-                        <input id="billing_city" type="text" class="form-control @error('billing_city') is-invalid @enderror"
-                            name="billing_city" value="{{ old('city') }}" autocomplete="city" autofocus>
+                        <input id="billing_city" type="text"
+                            class="form-control @error('billing_city') is-invalid @enderror" name="billing_city"
+                            value="{{ old('city') }}" autocomplete="city" autofocus>
                         @error('billing_city')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
                         @enderror
                     </div>
 
                     <div class="col-md-5 mb-3">
                         <label for="billing_province">Province</label>
-                        <input id="billing_province" type="text" class="form-control @error('billing_province') is-invalid @enderror"
-                            name="billing_province" value="{{ old('province') }}" autocomplete="province" autofocus>
+                        <input id="billing_province" type="text"
+                            class="form-control @error('billing_province') is-invalid @enderror" name="billing_province"
+                            value="{{ old('province') }}" autocomplete="province" autofocus>
                         @error('billing_province')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
                         @enderror
                     </div>
 
                     <div class="col-md-3 mb-3">
                         <label for="billing_postalcode">Postal Code</label>
-                        <input id="billing_postalcode" type="text" class="form-control @error('billing_postalcode') is-invalid @enderror"
-                            name="billing_postalcode" value="{{ old('postalcode') }}" autocomplete="postalcode" autofocus>
+                        <input id="billing_postalcode" type="text"
+                            class="form-control @error('billing_postalcode') is-invalid @enderror"
+                            name="billing_postalcode" value="{{ old('postalcode') }}" autocomplete="postalcode"
+                            autofocus>
                         @error('billing_postalcode')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
                         @enderror
                     </div>
                 </div> <!-- row end -->
 
                 <div class="mb-3">
                     <label for="billing_phone">Phone</label>
-                    <input id="billing_phone" type="text" class="form-control @error('billing_phone') is-invalid @enderror"
-                        name="billing_phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
+                    <input id="billing_phone" type="text"
+                        class="form-control @error('billing_phone') is-invalid @enderror" name="billing_phone"
+                        value="{{ old('phone') }}" autocomplete="phone" autofocus>
                     @error('billing_phone')
-                        <div class="alert alert-danger">
-                            {{ $message }}
-                        </div>
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
 
@@ -260,10 +267,10 @@ a:hover {
                 </div>
                 <hr>
                 @endforeach
-            </div> {{-- ORDER DETAILS end --}}
-        </div>{{-- col-md-4 order-md-2 mb-4 end --}}
-    </div> {{-- row end --}}
-</div> {{-- container end --}}
+            </div> 
+        </div>
+    </div>
+</div>
 
 <br><br>
 @endsection

@@ -61,11 +61,13 @@
 
                         <!-- Quantity -->
                         <div class="form-group row">
-                            <label for="quantity" class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
+                            <label for="quantity"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
 
                             <div class="col-md-6">
-                                <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror"
-                                    name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
+                                <input id="quantity" type="text"
+                                    class="form-control @error('quantity') is-invalid @enderror" name="quantity"
+                                    value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
                                 @error('quantity')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -82,7 +84,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="category_id" echo $category>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

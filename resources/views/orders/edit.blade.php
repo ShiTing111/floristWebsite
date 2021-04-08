@@ -96,7 +96,7 @@ a:hover {
             @endif
 
             <form action="{{ route('orders.update',$order->id) }}" method="POST" id="payment-form">
-            
+
                 <div class="mb-3">
                     <label for="email">Email Address</label>
                     @if (auth()->user())
@@ -111,21 +111,22 @@ a:hover {
 
                 <div class="mb-3">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="billing_name" value="{{$order->billing_name}}" required>
+                    <input type="text" class="form-control" id="name" name="billing_name"
+                        value="{{$order->billing_name}}" required>
                 </div>
 
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" name="billing_address" value="{{$order->billing_address}}"
-                        required>
+                    <input type="text" class="form-control" id="address" name="billing_address"
+                        value="{{$order->billing_address}}" required>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" name="billing_city" value="{{$order->billing_city}}"
-                            required>
+                        <input type="text" class="form-control" id="city" name="billing_city"
+                            value="{{$order->billing_city}}" required>
                     </div>
                     <div class="col-md-5 mb-3">
                         <label for="province">Province</label>
@@ -142,11 +143,12 @@ a:hover {
 
                 <div class="mb-3">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="billing_phone" value="{{$order->billing_phone}}" required>
+                    <input type="text" class="form-control" id="phone" name="billing_phone"
+                        value="{{$order->billing_phone}}" required>
                 </div>
 
                 <hr class="mb-4">
-                
+
                 <h4 class="mb-3">Payment</h4>
                 <div class="row">
                     <div class="col-md-12">
@@ -176,7 +178,7 @@ a:hover {
                             <td>{{$count}} BOUQUET</td>
                             <td></td>
                         </tr>
-                        
+
                         <tr style="font-weight: bold">
                             <td>Total</td>
                             <td>RM {{$order->billing_total}}</td>
@@ -192,8 +194,7 @@ a:hover {
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <img src="{{ asset('storage/bouquet/'.$bouquet->image )}}" alt="item"
-                                class="img_cartpage">
+                            <img src="{{ asset('storage/bouquet/'.$bouquet->image )}}" alt="item" class="img_cartpage">
                         </div>
                         <div class="col-lg-7">
                             <a style="color: black;">{{$bouquet->title}}</a>
@@ -205,10 +206,10 @@ a:hover {
                 </div>
                 <hr>
                 @endforeach
-            </div> {{-- ORDER DETAILS end --}}
-        </div>{{-- col-md-4 order-md-2 mb-4 end --}}
-    </div> {{-- row end --}}
-</div> {{-- container end --}}
+            </div>
+        </div>
+    </div> 
+</div>
 
 <br><br>
 @endsection

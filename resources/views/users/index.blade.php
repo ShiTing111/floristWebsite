@@ -60,15 +60,26 @@ a:hover {
     <a href="/">Home</a>
     /
     <span>My Profile</span>
-    
+
     <div class="row">
         <div class="col-lg-6 buttons">
-        <hr>
+            <hr>
             @if(session()->has('success_message'))
             <div class="alert alert-success">
                 {{ session()->get('success_message') }}
             </div>
             @endif
+
+            @if(count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
             <br>
             <form action="{{ route('users.update', $user->id) }}" method="POST">
                 @method('PUT')
@@ -92,7 +103,8 @@ a:hover {
 
                 <button type="submit" class="btn btn-success btn-lg btn-block">Update</button>
             </form>
-            <br><hr>
+            <br>
+            <hr>
             <form method="POST" action="{{ route('users.destroy', $user->id) }}"
                 onSubmit="return confirm('Are you sure you want delete your account?');">
                 @csrf
@@ -106,5 +118,4 @@ a:hover {
 </div>
 
 <div style="height: 100px;"></div>
-
 @endsection
