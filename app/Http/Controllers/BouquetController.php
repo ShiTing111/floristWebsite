@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Bouquet;
+use App\Models\BouquetOrder;
 use App\Models\Order;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Auth;
-use App\Models\Category;
 
 class BouquetController extends Controller
 {
@@ -26,6 +27,7 @@ class BouquetController extends Controller
             $bouquets = Bouquet::where('category_id', '>', 0)->get();
         }
         
+        //sort by price
         if (request()->sort == 'low_high') {
             $bouquets = $bouquets->sortBy('price');
         } else if (request()->sort == 'high_low') {
@@ -52,31 +54,34 @@ class BouquetController extends Controller
 
     public function store(Request $request) 
     {
-        $bouquet = new Bouquet();
+        if (Gate::allows('isAdmin')) {
+            $bouquet = new Bouquet();
 
-        $validated_data = $request->validate([
-            'title' => 'required|max:20',
-            'description' => 'required|max:300',
-            'price' => 'required',
-            'quantity' => 'required',
-            'category_id' => 'required',
-        ]);
+            $validated_data = $request->validate([
+                'title' => 'required|max:20',
+                'description' => 'required|max:300',
+                'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+                'quantity' => 'required|numeric',
+                'category_id' => 'required',
+            ]);
 
-        if($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); //getting image extension
-            $filename = time().'.'.$extension;
-            $file->move('storage/bouquet/', $filename);
-            $bouquet->image = $filename;
+            if($request->hasfile('image')) {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension(); //getting image extension
+                $filename = time().'.'.$extension;
+                $file->move('storage/bouquet/', $filename);
+                $bouquet->image = $filename;
+            } else {
+                $bouquet->image = '';
+            }
+            
+            $bouquet->fill($validated_data);
+            $bouquet->save();
+
+            return redirect()->route('bouquets.index')->with('success_message', 'New Bouquet Registered Successful!');
         } else {
-            return $request;
-            $bouquet->image = '';
+            return view('unauthorized');
         }
-        
-        $bouquet->fill($validated_data);
-        $bouquet->save();
-
-        return redirect()->route('bouquets.index')->with('alert','New Bouquet Registered Successful!');
     }
 
     public function create()
@@ -87,7 +92,7 @@ class BouquetController extends Controller
                 'categories' => $categories,
             ]);
         } else {
-            dd('You are not an Admin');
+            return view('unauthorized');
         }
     }
 
@@ -105,7 +110,7 @@ class BouquetController extends Controller
             return view('bouquets.edit', ['bouquet' => $bouquet, 
             'categories' => $categories]);
         } else {
-            dd('You are not an Admin');
+            return view('unauthorized');
         }
     }
 
@@ -118,34 +123,48 @@ class BouquetController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $bouquet = Bouquet::findOrFail($id);
+        if (Gate::allows('isAdmin')) {
+            $bouquet = Bouquet::findOrFail($id);
 
-        $validated_data = $request->validate([
-            'title' => 'required|max:20',
-            'description' => 'required|max:300',
-            'price' => 'required',
-            'category_id' => 'required',
-        ]);
+            $validated_data = $request->validate([
+                'title' => 'required|max:20',
+                'description' => 'required|max:300',
+                'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+                'quantity' => 'required|numeric',
+                'category_id' => 'required',
+            ]);
 
-        if($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension(); //getting image extension
-            $filename = time().'.'.$extension;
-            $file->move('storage/bouquet/', $filename);
-            $bouquet->image = $filename;
+            if($request->hasfile('image')) {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension(); //getting image extension
+                $filename = time().'.'.$extension;
+                $file->move('storage/bouquet/', $filename);
+                $bouquet->image = $filename;
+            }
+
+            $bouquet->fill($validated_data);
+            $bouquet->save() ;
+
+            return redirect()->route('bouquets.index')->with('success_message', 'Bouquet Updated Successfully');
+        } else {
+            return view('unauthorized');
         }
-
-        $bouquet->fill($validated_data);
-        $bouquet->save() ;
-
-        return redirect()->route('bouquets.index')->with('alert','Bouquet Updated Successful!');
     }
 
     public function destroy($id)
     {
         if (Gate::allows('isAdmin')) {
             $bouquet = Bouquet::find($id);
-            $pendingOrder = Order::where('delivery_status', 'pending')->count();
+            $orders = Order::with('bouquets')->get();
+            $pendingOrder = 0;
+
+            foreach ($orders as $order) {
+                foreach($order->bouquets as $bouquet) {
+                    if($bouquet->id == $id && $order->delivery_status =="Pending") {
+                        $pendingOrder += 1;
+                    }
+                }
+            }
         
             if($pendingOrder > 0){
                 return back()->withErrors('Sorry! Someone is ordering the bouquet.');
@@ -156,7 +175,7 @@ class BouquetController extends Controller
                 return redirect()->route('bouquets.index')->with('success_message', 'Delete bouquet Successfully');
             }
         } else {
-            dd('You are not Admin');
+            return view('unauthorized');
         }
     }
 

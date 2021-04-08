@@ -61,7 +61,7 @@
 
                         <!-- Quantity -->
                         <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
+                            <label for="quantity" class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
 
                             <div class="col-md-6">
                                 <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror"
@@ -104,8 +104,7 @@
                         </div>
                         <div class="form-group row justify-content-center">
                             <div class="col-sm-4 text-center buttons">
-                                <input type="submit" class="spring-btn btn-lg btn-block" />
-                                <!-- <a href="{{url('/bouquets')}}"  class="btn btn-primary word">Cancel</a> -->
+                                <input type="submit" class="spring-btn btn-lg btn-block" value="Add" />
                             </div>
                         </div>
                     </form>

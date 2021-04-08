@@ -80,6 +80,6 @@ class RegisterController extends Controller
 
     public function showUserRegisterForm()
     {
-        return view('auth.register', ['url' => 'author', 'role' => 'user']);
+        return view('auth.register', ['url' => 'user', 'role' => 'user']);
     }
 }
