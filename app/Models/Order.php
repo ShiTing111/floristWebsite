@@ -11,7 +11,8 @@ class Order extends Model
 
     protected $fillable = [
         'user_id', 'billing_email', 'billing_name', 'billing_address', 'billing_city',
-        'billing_province', 'billing_postalcode', 'billing_phone', 'billing_total',
+        'billing_province', 'billing_postalcode', 'billing_phone', 'billing_total', 'delivery_status', 
+        'delivery_date',
     ];
 
     public function user()

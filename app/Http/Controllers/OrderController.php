@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Auth;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -46,12 +47,12 @@ class OrderController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+    {   
         $order = Order::findOrFail($id);
         $order->fill($request->all());
         $order->save();
 
-        return back()->with('success_message', 'update Success');
+        return back()->with('success_message', 'Update Success');
     }
 
     public function destroy(Order $order)

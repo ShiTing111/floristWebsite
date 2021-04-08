@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Bouquet;
+use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -144,8 +145,16 @@ class BouquetController extends Controller
     {
         if (Gate::allows('isAdmin')) {
             $bouquet = Bouquet::find($id);
-            $bouquet->delete();
-            return redirect()->route('bouquets.index');
+            $pendingOrder = Order::where('delivery_status', 'pending')->count();
+        
+            if($pendingOrder > 0){
+                return back()->withErrors('Sorry! Someone is ordering the bouquet.');
+            }else{
+                Storage::delete('storage/bouquet/'.$bouquet->image);
+                BouquetOrder::where('bouquet_id', $id)->delete();
+                $bouquet->delete();
+                return redirect()->route('bouquets.index')->with('success_message', 'Delete bouquet Successfully');
+            }
         } else {
             dd('You are not Admin');
         }
