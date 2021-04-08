@@ -109,6 +109,7 @@ a:hover {
                   </tbody>
             </table>
             @can('isUser')
+            @if($order->delivery_status == "Pending")
             <div class="row">
                 <div class="col-xl-1">
                     <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-dark pull-right">Update</a>
@@ -125,6 +126,7 @@ a:hover {
                     </form>
                 </div>
             </div>
+            @endif
             @endcan
 
             @can('isAdmin')

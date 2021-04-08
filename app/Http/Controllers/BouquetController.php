@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Bouquet;
+use App\Models\BouquetOrder;
 use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -145,8 +146,17 @@ class BouquetController extends Controller
     {
         if (Gate::allows('isAdmin')) {
             $bouquet = Bouquet::find($id);
-            $pendingOrder = Order::where('delivery_status', 'pending')->count();
-        
+            $orders = Order::with('bouquets')->get();
+            $pendingOrder = 0;
+
+            foreach ($orders as $order) {
+                foreach($order->bouquets as $bouquet) {
+                    if($bouquet->id == $id && $order->delivery_status =="Pending") {
+                        $pendingOrder += 1;
+                    }
+                }
+            }
+
             if($pendingOrder > 0){
                 return back()->withErrors('Sorry! Someone is ordering the bouquet.');
             }else{
