@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Order;
 use Auth;
 
 class UserController extends Controller
@@ -30,7 +31,22 @@ class UserController extends Controller
     function destroy($id)
     {
         $user = Auth::user();
-        $user->delete();
-        return redirect()->route('home');
+
+        $orders = Order::with('user')->get();
+        $pendingOrder = 0;
+
+        //check whether the user is ordering bouquets
+        foreach ($orders as $order) {
+            if($order->user->id == $id && $order->delivery_status =="Pending") {
+                $pendingOrder += 1;
+            }
+        }
+    
+        if($pendingOrder > 0){
+            return back()->withErrors('Sorry! You are ordering the bouquet(s). Cannot delete account.');
+        }else{
+            $user->delete();
+            return redirect()->route('home');
+        }
     }
 }

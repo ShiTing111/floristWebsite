@@ -10,23 +10,12 @@ use App\Bouquet;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
-    protected $policies = [
-        Bouquet::class => BouquetPolicy::class,
-    ];
-
-    /**
      * Register any authentication / authorization services.
      *
      * @return void
      */
     public function boot()
     {
-        $this->registerPolicies();
-        
         /* define an administrator user role */
         Gate::define('isAdmin', function($user) {
             return $user->role == 'admin';

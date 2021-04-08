@@ -6,9 +6,6 @@
 <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('animsition/css/animsition.min.css') }}">
-<!-- <link rel="stylesheet" type="text/css" href="{{ asset('select2/select2.min.css') }}"> -->
-<!-- <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"> -->
-
 <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 
@@ -169,7 +166,6 @@
         </div>
     </div>
 </div>
-{{--   --------------------- Bouquet detail end ----------- --}}
 @endsection
 
 @section('extra-js')

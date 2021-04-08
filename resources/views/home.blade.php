@@ -184,8 +184,6 @@ h4{
     <!-- End of Carousel -->
    
     <br><br>
-
-    <!-- Start of Shop's Value Details -->
     <div class="row">
         <div class="col-sm">
                 <div class="TableWrapper">
@@ -229,7 +227,6 @@ h4{
             </div>
         </div>
     </div>
-    <!-- End of Shop's Value Details -->
 </main>
 
 </div>
