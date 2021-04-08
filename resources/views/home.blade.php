@@ -106,6 +106,9 @@ h4{
 .img{
     opacity: 0.6;
 }
+.img{
+    opacity: 0.6;
+}
 </style>
 
 <div class="container">

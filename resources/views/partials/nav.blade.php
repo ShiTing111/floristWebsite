@@ -22,8 +22,7 @@
                 <li class="nav-item">
                     <a href="{{ url('/orders') }}" class="nav-link">Orders</a>
                 </li>
-                @endcan
-                @can('isUser')
+                @elsecan('isUser')
                 <li class="nav-item">
                     <a href="{{ url('/carts') }}" class="nav-link">Cart</a>
                 </li>
