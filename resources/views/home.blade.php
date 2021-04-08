@@ -93,18 +93,18 @@ h4{
     text-transform: uppercase;
     font-family: 'adiBlack',Arial,Helvetica,Verdana,sans-serif;
 }
-
 .caro3_3{
   margin-right: 70px;
   margin-left: 30px;
 }
 .caro3{
   margin: 10px;
-
 }
 .caro3_img{
   width: 470px;
-
+}
+.img{
+    opacity: 0.6;
 }
 </style>
 
@@ -121,50 +121,50 @@ h4{
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-
-                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/running-fw19-rfto-educate-hp-lf-mh-medium-d_tcm221-356981.jpg" alt="" width="100%" height="600px" fill="#777">
+                <div class="img">
+                <img src="https://images.squarespace-cdn.com/content/v1/5c85a0b8840b16e5e420f6a8/1553388660316-IVLK22CMNOF5P6VATW72/ke17ZwdGBToddI8pDm48kKNHYyweTgIwYtx8b-kby9tZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIvDu85HFtHH0E28VJBR8Yz1NFNxROjz23jYAcYszqeHQKMshLAGzx4R3EDFOm1kBS/french-flower-shop-atlanta" alt="" width="100%" height="600px" fill="#777">
+                </div>
                 <div class="container">
                 <div class="carousel-caption text-left">
-                    <h1 style="color: #000; font-weight: 600;">RUN FOR THE OCEANS</h1>
-                    <p style="color: #000;">It's time to take action against marine plastic pollution. Rally your <br>friends to join the movement.</p>
-                    <p><a class="btn btn-lg btn-dark" role="button" style="margin-bottom: 160px">LEARN MORE <i class="fa fa-arrow-right"></i></a></p>
+                    <h1 style="color: #000; font-weight: 600; font-size: 40px;">DESIGNER BOUQUETS <br> FOR EVERY OCCASION</h1>
+                    <p style="color: #000; font-size: 20px;">Show your sincerity to your loved ones.</p>
+                    <p><a href="{{ url('/bouquets') }}" class="btn btn-lg btn-dark" role="button" style="margin-bottom: 160px">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
                 </div>
                 </div>
             </div>
             <div class="carousel-item">
-
-                <img src="https://image.adidas.co.kr/upload/banner/bbf2598bfc7c4a2ba1f8aad25b494123_0429163854.jpg" alt="" width="100%" height="600px" fill="#777">
+                <div class="img">
+                <img src="https://www.appleyardflowers.com/blog/wp-content/uploads/2018/01/valentines2019-blog.jpg" alt="" width="100%" height="600px" fill="#777">
+                </div>
                 <div class="container">
                 <div class="carousel-caption text-left">
-                    <h1 style="color: #000; font-weight: 600;">For Women,<br>Give Love & Thanks</h1>
-                        
-                    <p style="color: #000;">Light up the night in new Nite Jogger colorways. Photo by Cole Younger.</p>
-                    <p><a class="btn btn-lg btn-dark" role="button">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
-                    <p><a class="btn btn-lg btn-dark" role="button" style="margin-bottom: 120px">VIEW MEMBER BENEFITS <i class="fa fa-arrow-right"></i></a></p>
+                    <h1 style="color: #000; font-weight: 800; font-size: 50px;">MY VALENTINE</h1>
+                    <p style="color: #000; font-size: 20px;">Specially made for him or her.</p>
+                    <p><a href="{{ url('/bouquets') }}" class="btn btn-lg btn-dark" role="button">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
                 
                 </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/training-aSMC-ss20-mh-earthday-image2-d_tcm221-485018.jpg" alt="" width="100%" height="600px" fill="#777">
+                <img src="https://www.thetrendspotter.net/wp-content/uploads/2019/07/What-to-Wear-to-Graduation.jpg" alt="" width="100%" height="600px" fill="#777">
 
                 <div class="carousel-caption text-left">
-                        <h1>HEY WORLD!</h1>
-                        <p>Earth Day is Every Day, the new collection that respects and celebrates our planet.</p>
-                        <p><a class="btn btn-lg btn-light" role="button">SHOP COLLECTION <i class="fa fa-arrow-right"></i></a></p>
+                        <h1 style="color: #FFF; font-weight: 800; font-size: 50px;">HEY GRADUATES!</h1>
+                        <p style="font-weight: 800; font-size: 20px;">Express heartfelt joy with our bouquets.</p>
+                        <p><a href="{{ url('/bouquets') }}" class="btn btn-lg btn-light" role="button">SHOP COLLECTION <i class="fa fa-arrow-right"></i></a></p>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <img src="https://content.nike.com/content/dam/one-nike/en_lu/SU19/Mens/W_20190516_EMEA_NSW_MLP_P3A_SHOX/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg.transform/full-screen/W_20190516_EMEA_NSW_MLP_P3A_SHOX_DT_1600x600_visual.jpg" alt="" width="100%" height="600px" fill="#777">
-
+            <div class="img">
+                <img src="https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/05/pjimage-13-1588926326.jpg" alt="" width="100%" height="600px" fill="#777">
+            </div>
                 <div class="container">
                 <div class="carousel-caption text-left">
-                    <h1>KICK UP A STORM IN SHOX</h1>
-                    <p>The subversive Nike Shox R4 is making<br>
-                        waves in clean monochrome colourways.</p>
-                    <p><a class="btn btn-lg btn-light" role="button" style="margin-bottom: 130px">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
+                    <h1 style="color: #000; font-weight: 800; font-size: 50px;">MOTHER'S DAY</h1>
+                    <p style="color: #000; font-weight: 800; font-size: 20px;">Express gratitude with us.</p>
+                    <p><a href="{{ url('/bouquets') }}" class="btn btn-lg btn-dark" role="button" style="margin-bottom: 130px">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
                 </div>
             </div>
         </div>
@@ -179,36 +179,12 @@ h4{
         </a>
     </div>
     <!-- End of Carousel -->
-    <br><br>
-   <!-- Start of Shops Details -->
-    <div class="row">
-        <div class="col-md-6 col-xs-12 col-sm-11">
-            <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/MOVED_OVER_tcm221-363900.jpg" width="550px" height="500px">
-
-            <div class="container">
-                <div class="carousel-caption">
-                    <h2>ULTRABOOST 19</h2>
-                    <p>Reboosted</p>
-                    <p><a class="btn btn-lg btn-light" href="#" role="button">SHOP NOW <i class="fa fa-arrow-right"></i></a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-xs-12 col-sm-11">
-            <img src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/originals-fw19-hoc-drop1-tease-hp-teaser-large-2up-ee5790-m-t_v2_tcm221-364940.jpg" width="550px" height="500px">
-            <div class="container">
-        <div class="carousel-caption">
-            <h2>HOME OF CLASSICS</h2>
-            <p><a class="btn btn-lg btn-light" href="#" role="button">PREVIEW NOW <i class="fa fa-arrow-right"></i></a></p>
-        </div>
-        </div>
-        </div>
-    </div>
-    <!-- End of Shops Details -->
+   
     <br><br>
 
     <!-- Start of Shop's Value Details -->
     <div class="row">
-        <div class="col-sm" style="text-align: center">
+        <div class="col-sm">
                 <div class="TableWrapper">
                     <table>
                         <tbody>
@@ -239,9 +215,9 @@ h4{
                     <table>
                         <tbody>
                         <tr>
-                            <td style="border:0;" width="100"><a href="/pages/delivery-information" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0781/4423/files/bloomthis-icon-vespa-2.png?v=1582274605" style="margin:0 auto;width:100px;"></a></td>
+                            <td style="border:0;" width="100"><img src="https://cdn.shopify.com/s/files/1/0781/4423/files/bloomthis-icon-vespa-2.png?v=1582274605" style="margin:0 auto;width:100px;"></a></td>
                             <td style="border:0;" width="200">
-                            <b class="Heading u-h2"><a href="/pages/delivery-information" target="_blank">Free Delivery*</a></b><br><a href="/pages/delivery-information" target="_blank">in KL, Selangor, Penang &amp; JB</a>
+                            <b class="Heading u-h2"><a>Free Delivery*</a></b><br><a>in KL, Selangor, &amp; JB</a>
                             </td>
                         </tr>
                         </tbody>
