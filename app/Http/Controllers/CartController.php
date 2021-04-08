@@ -14,18 +14,9 @@ class CartController extends Controller
 {
     public function index()
     {
-      
-        $top_pick = DB::table('bouquets')->orderBy('id','DESC')->paginate(4);
-        $top_pick2 = DB::table('bouquets')->orderBy('id','ASC')->paginate(4);
-        
         $userId = Auth::user()->id;
         Cart::restore($userId);
         return view('carts.index');
-        // return view('carts.index')->with([
-        //     'top_pick' => $top_pick,
-        //     'top_pick2' => $top_pick2,
-        
-        // ]);
     }
 
     public function store(Request $request)
@@ -37,7 +28,11 @@ class CartController extends Controller
         });
 
         if ($duplicates->isNotEmpty()) {
-            return redirect()->route('carts.index');
+            return redirect()->route('carts.index')->with('success_message', 'Item is already in your cart!');
+        }
+
+        if ($request->quantity > $request->productQuantity) {
+            return back()->with('success_message', 'We currently do not have enough items in stock.');
         }
 
         Cart::add($bouquet->id, $bouquet->title, $request->quantity, $bouquet->price)
@@ -47,37 +42,43 @@ class CartController extends Controller
         $id = Auth::user()->id;
         Cart::store($id);
         
-        return redirect()->route('carts.index');
-        //return redirect()->route('bouquets.show')->with('success_message', 'Item was added to your cart!');
+        return redirect()->route('carts.index')->with('success_message', 'Item was added to your cart!');
     }
 
-     /**
-     * Update the specified resource in storage.
-     **/
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'quantity' => 'required|numeric|between:1,5'
-        ]);
-
-        if ($validator->fails()) {
-            session()->flash('errors', collect(['Quantity must be between 1 and 5.']));
-            return response()->json(['success' => false], 400);
+        if ($request->operation == "add") {
+            if ($request->quantity >= $request->productQuantity) {
+                return back()->withErrors('We currently do not have enough items in stock.');
+            }
+            $this->addCart($request, $id);
+        } else {
+            $this->minusCart($request, $id);
         }
-
-        if ($request->quantity > $request->quantity) {
-            session()->flash('errors', collect(['We currently do not have enough items in stock.']));
-            return response()->json(['success' => false], 400);
-        }
-
-        Cart::update($id, $request->quantity);
-        
+      
         //Store in database
         $userId = Auth::user()->id;
         Cart::store($userId);
 
-        session()->flash('success_message', 'Quantity was updated successfully!');
-        return response()->json(['success' => true]);
+        return back()->with('success_message','Quantity is Updated');
+    }
+
+    public function addCart(Request $request, $id) 
+    {
+        $bouquet = Cart::get($id);
+        $bouquetqty = $bouquet->qty;
+        $updateqty = $bouquetqty+1;
+        Cart::update($id, $updateqty);
+        return back()->with('success_message', 'update Success');
+    }
+
+    public function minusCart(Request $request, $id) 
+    {
+        $bouquet = Cart::get($id);
+        $bouquetqty = $bouquet->qty;
+        $updateqty = $bouquetqty-1;
+        Cart::update($id, $updateqty);
+        return back()->with('success_message', 'update Success');
     }
 
     public function destroy($id)
@@ -87,25 +88,5 @@ class CartController extends Controller
         $userId = Auth::user()->id;
         Cart::store($userId);
         return back()->with('success_message', 'Item has been removed!');
-    }
-    
-    public function switchToSaveForLater($id)
-    {
-        $item = Cart::get($id);
-
-        Cart::remove($id);
-
-        $duplicates = Cart::instance('saveForLater')->search(function ($cartItem, $rowId) use ($id) {
-            return $rowId === $id;
-        });
-
-        if ($duplicates->isNotEmpty()) {
-            return redirect()->route('carts.index')->with('success_message', 'Item is already Saved For Later!');
-        }
-
-        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)
-            ->associate('App\Models\Bouquet');
-
-        return redirect()->route('carts.index')->with('success_message', 'Item has been Saved For Later!');
     }
 }

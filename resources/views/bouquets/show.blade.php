@@ -82,9 +82,16 @@
                 <span class="zms_price">
                     RM {{ $bouquet->price }}
                 </span>
-
+                <br>
+                @can('isAdmin')
+                <span class="zms_price">
+                    Quantity: {{ $bouquet->quantity }}
+                </span>
+                @endcan
+                <p>{!! $stockLevel !!} </p>
+                
                 <div class="p-b-20">
-                    <span class="s-text8">Category: {{$bouquet->category}}</span>
+                    <span class="s-text8">Category: {{ $bouquet->category->name }}</span>
                 </div>
                 @cannot('isAdmin')
                 <!-- Add to Cart -->
@@ -94,6 +101,7 @@
                         <div class="flex-w">
                             <div class="flex-m">
                                 <div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
+                                    <input type="hidden" name="productQuantity" value="{{$bouquet->quantity}}">
                                     <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
                                         <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
                                     </button>

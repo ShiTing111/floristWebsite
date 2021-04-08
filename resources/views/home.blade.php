@@ -93,18 +93,18 @@ h4{
     text-transform: uppercase;
     font-family: 'adiBlack',Arial,Helvetica,Verdana,sans-serif;
 }
-
 .caro3_3{
   margin-right: 70px;
   margin-left: 30px;
 }
 .caro3{
   margin: 10px;
-
 }
 .caro3_img{
   width: 470px;
-
+}
+.img{
+    opacity: 0.6;
 }
 .img{
     opacity: 0.6;
@@ -187,7 +187,7 @@ h4{
 
     <!-- Start of Shop's Value Details -->
     <div class="row">
-        <div class="col-sm" style="text-align: center">
+        <div class="col-sm">
                 <div class="TableWrapper">
                     <table>
                         <tbody>
@@ -218,9 +218,9 @@ h4{
                     <table>
                         <tbody>
                         <tr>
-                            <td style="border:0;" width="100"><a href="/pages/delivery-information" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0781/4423/files/bloomthis-icon-vespa-2.png?v=1582274605" style="margin:0 auto;width:100px;"></a></td>
+                            <td style="border:0;" width="100"><img src="https://cdn.shopify.com/s/files/1/0781/4423/files/bloomthis-icon-vespa-2.png?v=1582274605" style="margin:0 auto;width:100px;"></a></td>
                             <td style="border:0;" width="200">
-                            <b class="Heading u-h2"><a href="/pages/delivery-information" target="_blank">Free Delivery*</a></b><br><a href="/pages/delivery-information" target="_blank">in KL, Selangor, Penang &amp; JB</a>
+                            <b class="Heading u-h2"><a>Free Delivery*</a></b><br><a>in KL, Selangor, &amp; JB</a>
                             </td>
                         </tr>
                         </tbody>

@@ -18,12 +18,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/users') }}">Profile</a>
                 </li>
+                @can('isAdmin')
+                <li class="nav-item">
+                    <a href="{{ url('/orders') }}" class="nav-link">Orders</a>
+                </li>
+                @endcan
                 @can('isUser')
                 <li class="nav-item">
                     <a href="{{ url('/orders') }}" class="nav-link">My Orders</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/carts') }}" class="nav-link">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/orders') }}" class="nav-link">My Orders</a>
                 </li>
                 @endcan
             </ul>
@@ -39,7 +47,7 @@
                     
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{  url('/register/user') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else

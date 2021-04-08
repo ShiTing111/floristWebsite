@@ -23,9 +23,10 @@ class CreateOrdersTable extends Migration
             $table->string('billing_postalcode')->nullable();
             $table->string('billing_phone')->nullable();
             $table->integer('billing_total');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')->on('users');
+            $table->enum('delivery_status', ['Pending', 'Delivered'])->default('Pending');
+            $table->timestamps('delivery_date')->nullable();
+            $table->foreignId('user_id')
+            ->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

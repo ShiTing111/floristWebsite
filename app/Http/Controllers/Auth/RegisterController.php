@@ -72,4 +72,14 @@ class RegisterController extends Controller
             'role' => $data['role'],
         ]);
     }
+
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register', ['url' => 'admin', 'role' => 'admin']);
+    }
+
+    public function showUserRegisterForm()
+    {
+        return view('auth.register', ['url' => 'author', 'role' => 'user']);
+    }
 }

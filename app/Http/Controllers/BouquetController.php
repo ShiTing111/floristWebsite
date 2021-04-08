@@ -2,34 +2,51 @@
 
 namespace App\Http\Controllers;
 use App\Models\Bouquet;
+use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Auth;
+use App\Models\Category;
 
 class BouquetController extends Controller
 {
-    // public function index() 
-    // {
-    //     $bouquets = Bouquet::all();
-    //     return view('bouquet', ['bouquets' => $bouquets]);
-    // }
-
     public function index()
     {
-        $bouquets = Bouquet::paginate(16);
-        // $images = BouquetImages::where('bouquetId', 1);
-        return view('bouquets.index', ['bouquets' => $bouquets]);
-      
+        $pagination = 8;
+        $categories = Category::all();
+
+        //sort by category
+        if (request()->category) {
+            $category_id = request()->category;
+            $bouquets = Bouquet::whereHas('category', function ($query) use ($category_id) {
+                $query->where('id', $category_id);
+            })->get();
+        } else {
+            $bouquets = Bouquet::where('category_id', '>', 0)->get();
+        }
+        
+        if (request()->sort == 'low_high') {
+            $bouquets = $bouquets->sortBy('price');
+        } else if (request()->sort == 'high_low') {
+            $bouquets = $bouquets->sortByDesc('price');
+        } else if (request()->sort == 'Newest') {
+            $bouquets = $bouquets->sortByDesc('id');
+        }
+
+        return view('bouquets.index', ['bouquets' => $bouquets, 
+        'categories' => $categories]);
     }
 
     public function show($id)
     {
         $user = Auth::user();
         $bouquet = Bouquet::findOrFail($id);
+        $stockLevel = $this->getStockLevel($bouquet->quantity);
 
         return view('bouquets.show',[
             'bouquet' => $bouquet,
+            'stockLevel' => $stockLevel,
         ]);
     }
 
@@ -41,7 +58,8 @@ class BouquetController extends Controller
             'title' => 'required|max:20',
             'description' => 'required|max:300',
             'price' => 'required',
-            'category' => 'required',
+            'quantity' => 'required',
+            'category_id' => 'required',
         ]);
 
         if($request->hasfile('image')) {
@@ -64,7 +82,10 @@ class BouquetController extends Controller
     public function create()
     {
         if (Gate::allows('isAdmin')) {
-            return view('bouquets.create');
+            $categories = Category::all();
+            return view('bouquets.create', [
+                'categories' => $categories,
+            ]);
         } else {
             dd('You are not an Admin');
         }
@@ -80,7 +101,9 @@ class BouquetController extends Controller
     {
         if (Gate::allows('isAdmin')) {
             $bouquet = Bouquet::findOrFail($id);
-            return view('bouquets.edit', ['bouquet' => $bouquet]);
+            $categories = Category::all();
+            return view('bouquets.edit', ['bouquet' => $bouquet, 
+            'categories' => $categories]);
         } else {
             dd('You are not an Admin');
         }
@@ -101,7 +124,7 @@ class BouquetController extends Controller
             'title' => 'required|max:20',
             'description' => 'required|max:300',
             'price' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
         ]);
 
         if($request->hasfile('image')) {
@@ -122,10 +145,31 @@ class BouquetController extends Controller
     {
         if (Gate::allows('isAdmin')) {
             $bouquet = Bouquet::find($id);
-            $bouquet->delete();
-            return redirect()->route('bouquets.index');
+            $pendingOrder = Order::where('delivery_status', 'pending')->count();
+        
+            if($pendingOrder > 0){
+                return back()->withErrors('Sorry! Someone is ordering the bouquet.');
+            }else{
+                Storage::delete('storage/bouquet/'.$bouquet->image);
+                BouquetOrder::where('bouquet_id', $id)->delete();
+                $bouquet->delete();
+                return redirect()->route('bouquets.index')->with('success_message', 'Delete bouquet Successfully');
+            }
         } else {
             dd('You are not Admin');
         }
     }
+
+    function getStockLevel($quantity)
+    {
+        if ($quantity >  5) {
+            $stockLevel = '<div class="badge badge-success">In Stock</div>';
+        } elseif ($quantity <= 5 && $quantity > 0) {
+            $stockLevel = '<div class="badge badge-warning">Low Stock</div>';
+        } else {
+            $stockLevel = '<div class="badge badge-danger">Not available</div>';
+        }
+
+        return $stockLevel;
+    }   
 }

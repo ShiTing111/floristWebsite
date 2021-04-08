@@ -95,6 +95,18 @@ a:hover {
             </div>
             @endif
 
+            @if(count($errors) > 0)
+            <div class="spacer"></div>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{!! $error !!}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            {{-- success error msg end --}}
+
             <form method="POST" id="payment-form">
                 @csrf
                 <div class="mb-3">
@@ -146,7 +158,7 @@ a:hover {
                 </div>
 
                 <hr class="mb-4">
-                
+
                 <h4 class="mb-3">Payment</h4>
                 <div class="row">
                     <div class="col-md-12">

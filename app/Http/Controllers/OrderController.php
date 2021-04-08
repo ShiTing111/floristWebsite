@@ -1,32 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\BouquetOrder;
 use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Auth;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        // $orders = Order::paginate(10);
-        // return view('orders.index', ['orders' => $orders]);
-        
-        // $orders = Auth::user()->orders()->with('bouquets')->orderby('id','desc')->get(); // fix n + 1 issues
-        $orders = Order::with('bouquets')->orderby('id','desc')->get();
-
-        return view('orders.index')->with('orders', $orders);
-      
+        if (Gate::allows('isAdmin')) {
+            $orders = Order::with('bouquets')->orderby('id','desc')->get();
+        } else {
+            $orders = Auth::user()->orders()->with('bouquets')->orderby('id','desc')->get(); 
+        }
+        return view('orders.index', ['orders' => $orders]);
     }
 
     public function show(Order $order)
     {
-        if (Auth::id() !== $order->user_id) {
-            return back()->withErrors('You do not have access to this!');
-        }
-
         $bouquets = $order->bouquets;
 
         return view('orders.show')->with([
@@ -37,7 +33,6 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        // $order = Order::findOrFail($id);
         $count = 0;
         foreach ($order->bouquets as $bouquet){
             $count += $bouquet->pivot->quantity;
@@ -52,17 +47,21 @@ class OrderController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+    {   
         $order = Order::findOrFail($id);
         $order->fill($request->all());
         $order->save();
 
-        return back()->with('success_message', 'update Success');
+        return back()->with('success_message', 'Update Success');
     }
 
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        $order = Order::find($id);
+        // $order = Order::find($id);
+        foreach ($order->bouquets as $bouquet){
+            $bouquet->update(['quantity' => $bouquet->quantity + $bouquet->pivot->quantity]);
+        }
+        BouquetOrder::where('order_id', $order->id)->delete();
         $order->delete();
         return redirect()->route('orders.index');
     }
