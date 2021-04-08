@@ -44,7 +44,6 @@ form {
             @if(Cart::count() > 0)
             <h2>YOUR BAG <span class="title_cartpage">{{Cart::count()}} ITEMS </span></h2>
 
-
             {{-- success error msg start --}}
             @if(session()->has('success_message'))
             <div class="alert alert-success">
@@ -88,36 +87,38 @@ form {
                     <div class="flex-w">
                         <div class="flex-m">
                             <div class="flex-w bo5 of-hidden m-t-10 m-b-10">
-                                
-                                <form action="{{route('carts.update',$item->rowId)}}" method="POST" 
-                                onsubmit="addButton.disabled = true; return true;">
-                                @csrf
-                                @method('patch')
-                                <input type="hidden" name="quantity" value="{{$item->qty}}">
-                                <input type="hidden" name="operation" value="minus">
-                                <input type="hidden" name="productQuantity" value="{{$item->model->quantity}}">
-                                <button name="addButton" type="submit" class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-                                    <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-                                </button>
+
+                                <form action="{{route('carts.update',$item->rowId)}}" method="POST"
+                                    onsubmit="addButton.disabled = true; return true;">
+                                    @csrf
+                                    @method('patch')
+                                    <input type="hidden" name="quantity" value="{{$item->qty}}">
+                                    <input type="hidden" name="operation" value="minus">
+                                    <input type="hidden" name="productQuantity" value="{{$item->model->quantity}}">
+                                    <button name="addButton" type="submit"
+                                        class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+                                        <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+                                    </button>
                                 </form>
                                 <input class="size8 m-text18 t-center num-product" data-id="{{ $item->rowId }}"
                                     data-productQuantity="{{ $item->model->quantity }}" type="number" name="quantity"
                                     value="{{$item->qty}}" />
-                                <form action="{{route('carts.update',$item->rowId)}}" method="POST" 
-                                onsubmit="minusButton.disabled = true; return true;">
-                                @csrf
-                                @method('patch')
-                                <input type="hidden" name="quantity" value="{{$item->qty}}">
-                                <input type="hidden" name="operation" value="add">
-                                <input type="hidden" name="productQuantity" value="{{$item->model->quantity}}">
-                                <button name="minusButton" type="submit" class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-                                    <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-                                </button>
+                                <form action="{{route('carts.update',$item->rowId)}}" method="POST"
+                                    onsubmit="minusButton.disabled = true; return true;">
+                                    @csrf
+                                    @method('patch')
+                                    <input type="hidden" name="quantity" value="{{$item->qty}}">
+                                    <input type="hidden" name="operation" value="add">
+                                    <input type="hidden" name="productQuantity" value="{{$item->model->quantity}}">
+                                    <button name="minusButton" type="submit"
+                                        class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+                                        <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="col-lg-1"></div>
                     <div class="col-lg-2">RM {{$item->subtotal}}</div>
                 </div>
@@ -176,20 +177,10 @@ form {
                     </table>
                 </div>
             </div>
-        </div> {{-- col-lg-3 col-sm-6 col-xs-12 end --}}
-    </div>{{--  row end --}}
-
-    {{-- ----------------------------- ROW CART END ----------------------------- --}}
-
-
-
-</div> {{-- col-lg-9 end --}}
-<div class="col-lg-3">
-
+        </div> 
+    </div>{
+</div> 
 </div>
-</div> {{-- row end --}}
-
-
 </div>
 <br><br>
 

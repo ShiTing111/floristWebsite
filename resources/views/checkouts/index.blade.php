@@ -110,51 +110,90 @@ a:hover {
             <form method="POST" id="payment-form">
                 @csrf
                 <div class="mb-3">
-                    <label for="email">Email Address</label>
+                    <label for="billing_email">Email Address</label>
                     @if (auth()->user())
-                    <input type="email" class="form-control" id="email" name="email" value="{{ auth()->user()->email }}"
-                        readonly>
+                    <input type="billing_email" class="form-control" id="billing_email" name="billing_email"
+                        value="{{ auth()->user()->email }}" readonly>
                     @else
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"
-                        required>
+                    <input type="billing_email" class="form-control" id="billing_email" name="billing_email"
+                        value="{{ old('email') }}">
                     @endif
                 </div>
 
 
                 <div class="mb-3">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+                    <label for="billing_name">Name</label>
+                    <input id="billing_name" type="text"
+                        class="form-control @error('billing_name') is-invalid @enderror" name="billing_name"
+                        value="{{ old('name') }}" autocomplete="name" autofocus>
+                    @error('billing_name')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
-
                 <div class="mb-3">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}"
-                        required>
+                    <label for="billing_address">Address</label>
+                    <input id="billing_address" type="text"
+                        class="form-control @error('billing_address') is-invalid @enderror" name="billing_address"
+                        value="{{ old('address') }}" autocomplete="address" autofocus>
+                    @error('billing_address')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}"
-                            required>
+                        <label for="billing_city">City</label>
+                        <input id="billing_city" type="text"
+                            class="form-control @error('billing_city') is-invalid @enderror" name="billing_city"
+                            value="{{ old('city') }}" autocomplete="city" autofocus>
+                        @error('billing_city')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
+
                     <div class="col-md-5 mb-3">
-                        <label for="province">Province</label>
-                        <input type="text" class="form-control" id="province" name="province"
-                            value="{{ old('province') }}" required>
+                        <label for="billing_province">Province</label>
+                        <input id="billing_province" type="text"
+                            class="form-control @error('billing_province') is-invalid @enderror" name="billing_province"
+                            value="{{ old('province') }}" autocomplete="province" autofocus>
+                        @error('billing_province')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="col-md-3 mb-3">
-                        <label for="postalcode">Postal Code</label>
-                        <input type="text" class="form-control" id="postalcode" name="postalcode"
-                            value="{{ old('postalcode') }}" required>
+                        <label for="billing_postalcode">Postal Code</label>
+                        <input id="billing_postalcode" type="text"
+                            class="form-control @error('billing_postalcode') is-invalid @enderror"
+                            name="billing_postalcode" value="{{ old('postalcode') }}" autocomplete="postalcode"
+                            autofocus>
+                        @error('billing_postalcode')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div> <!-- row end -->
 
                 <div class="mb-3">
-                    <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                    <label for="billing_phone">Phone</label>
+                    <input id="billing_phone" type="text"
+                        class="form-control @error('billing_phone') is-invalid @enderror" name="billing_phone"
+                        value="{{ old('phone') }}" autocomplete="phone" autofocus>
+                    @error('billing_phone')
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <hr class="mb-4">
@@ -228,10 +267,10 @@ a:hover {
                 </div>
                 <hr>
                 @endforeach
-            </div> {{-- ORDER DETAILS end --}}
-        </div>{{-- col-md-4 order-md-2 mb-4 end --}}
-    </div> {{-- row end --}}
-</div> {{-- container end --}}
+            </div> 
+        </div>
+    </div>
+</div>
 
 <br><br>
 @endsection

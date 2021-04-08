@@ -106,7 +106,7 @@ a:hover {
                         <td>-</td>
                         @endif
                     </tr>
-                  </tbody>
+                </tbody>
             </table>
             @can('isUser')
             @if($order->delivery_status == "Pending")
@@ -163,8 +163,7 @@ a:hover {
 
                         <p>RM {{ $bouquet->price }}</p>
 
-                        <p class="cart_p">COLOR: Black <br>
-                            Quantity: {{ $bouquet->pivot->quantity }} </p>
+                        <p class="cart_p">Quantity: {{ $bouquet->pivot->quantity }} </p>
                     </div>
                 </div>
             </div>

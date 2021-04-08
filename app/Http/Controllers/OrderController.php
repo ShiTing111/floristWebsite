@@ -57,10 +57,12 @@ class OrderController extends Controller
 
     public function destroy(Order $order)
     {
-        // $order = Order::find($id);
+        //If user cancel order, bouquet quantity will be increased.
         foreach ($order->bouquets as $bouquet){
             $bouquet->update(['quantity' => $bouquet->quantity + $bouquet->pivot->quantity]);
         }
+
+        //Delete the bouquet order records according to the order id
         BouquetOrder::where('order_id', $order->id)->delete();
         $order->delete();
         return redirect()->route('orders.index');

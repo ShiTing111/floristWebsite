@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Thank You')
+@section('title', 'Unauthorized')
 
 @section('extra-css')
 
@@ -11,12 +11,11 @@
 @section('content')
 
 <div class="container">
-    <div class="row">
+    <div class="row" style="height: 500px;">
         <div class="col-lg-4"></div>
         <div class="col-lg-5">
-            <h1>Thank you for <br> Your Order!</h1>
-            <a href="{{ url('/') }}" class="button">Home Page</a>
+                <h1>You are <b style="color: red">Unauthorized</b> to view this page!</h1>
         </div>
-    </div>
+    </div>  
 </div>
 @endsection

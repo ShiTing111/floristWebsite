@@ -21,23 +21,21 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 Auth::routes();
+
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resources([
     'bouquets'=>BouquetController::class,
     'users'=>UserController::class,
 ]);
-// Route::get('/login', [LoginController::class, 'showUserLoginForm']);
-Route::get('/register/user', [RegisterController::class,'showUserRegisterForm']);
-// Route::post('/login', [LoginController::class,'userLogin']);
-// Route::post('/register', [RegisterController::class,'createUser']);
 
-// Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
+Route::get('/register/user', [RegisterController::class,'showUserRegisterForm']);
+Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/register/admin', [RegisterController::class,'showAdminRegisterForm']);
-// Route::post('/login/admin', [LoginController::class,'adminLogin']);
-// Route::post('/register/admin', [RegisterController::class,'createAdmin']);
+Route::view('unauthorized', 'unauthorized');
 
 Route::middleware('auth')->group(function () {
     Route::resources([
@@ -50,4 +48,3 @@ Route::middleware('auth')->group(function () {
     ]);
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

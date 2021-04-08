@@ -16,33 +16,38 @@ use App\Common;
                 <h2 style="text-align: center"> Edit New Bouquet </h2>
                 <br>
                 <div class="card-body">
-                    <form action="{{ route('bouquets.update',$bouquet->id) }}" method="POST" class="admin_form word" enctype="multipart/form-data" onSubmit="return confirm('Are you sure you wish to update the bouquet detail?');">
-                    <!-- Title -->
-                    
-                    @csrf
-                    @method('PUT')
+                    <form action="{{ route('bouquets.update',$bouquet->id) }}" method="POST" class="admin_form word"
+                        enctype="multipart/form-data"
+                        onSubmit="return confirm('Are you sure you wish to update the bouquet detail?');">
+                        @csrf
+                        @method('PUT')
+                        <!-- Title -->
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
                             <div class="col-md-6">
-                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{$bouquet->title}}" required autocomplete="title" autofocus>
-                            @error('title')
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror"
+                                    name="title" value="{{$bouquet->title}}" required autocomplete="title" autofocus>
+                                @error('title')
                                 <span class="alert alert-danger" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
+                                @enderror
                             </div>
                         </div>
-                        
+
                         <!-- Description -->
                         <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            <label for="description"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{$bouquet->description}}" required autocomplete="description" autofocus>
+                                <input id="description" type="text"
+                                    class="form-control @error('description') is-invalid @enderror" name="description"
+                                    value="{{$bouquet->description}}" required autocomplete="description" autofocus>
                                 @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -52,15 +57,32 @@ use App\Common;
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{$bouquet->price}}" required autocomplete="price" autofocus>
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror"
+                                    name="price" value="{{$bouquet->price}}" required autocomplete="price" autofocus>
                                 @error('price')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
 
+                        <!-- Quantity -->
+                        <div class="form-group row">
+                            <label for="quantity"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Quantity') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="quantity" type="text"
+                                    class="form-control @error('quantity') is-invalid @enderror" name="quantity"
+                                    value="{{$bouquet->quantity}}" required autocomplete="quantity" autofocus>
+                                @error('quantity')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
                         <!-- Category -->
                         <div class="form-group row">
                             <label for="category"
@@ -69,7 +91,7 @@ use App\Common;
                             <div class="col-md-6">
                                 <select class="form-control" name="category_id" echo $category>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -78,19 +100,19 @@ use App\Common;
                         <!-- Image -->
                         <div class="form-group row">
                             <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
-                             <div class="col-md-6">
-                            <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror" id="image"/>
-                            @error('image')
+                            <div class="col-md-6">
+                                <input type="file" name="image"
+                                    class="form-control-file @error('image') is-invalid @enderror" id="image" />
+                                @error('image')
                                 <div class="alert alert-danger">
                                     {{ $message }}
                                 </div>
-                            @enderror
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group row justify-content-center">
                             <div class="col-sm-4 text-center buttons">
-                            <input type="submit" class="spring-btn btn-lg btn-block"/>
-                            <!-- <a href="{{url('/bouquets')}}"  class="btn btn-primary word">Cancel</a> -->
+                                <input type="submit" class="spring-btn btn-lg btn-block" value="Edit" />
                             </div>
                         </div>
                     </form>
